@@ -48,7 +48,7 @@ This file is the project-wide agent entry point. The latest user instructions ta
 
 ## Session finish and persistent context
 
-Update docs/status.md with what changed, exact checks and results, unresolved issues, and one concrete next step. Add a concise history entry for meaningful completed work. Record consequential choices in docs/decisions.md. Update JD evidence only when an artifact supports it.
+Update docs/status.md with what changed, exact checks and results, unresolved issues, and one concrete next step. Add meaningful history and consequential decisions to the date's `docs/daily/YYYY-MM-DD.md`; keep docs/history.md and docs/decisions.md as indexes. Update JD evidence only when an artifact supports it.
 
 For substantial features, write a walkthrough under docs/walkthroughs/ and update the learning ledger with the actual assessment state. Do not manufacture Bryan's answers. Keep handoffs useful even when a session ends mid-feature. Report remaining processes/resources you started; do not stop unrelated services.
 
@@ -62,10 +62,11 @@ For substantial features, write a walkthrough under docs/walkthroughs/ and updat
 | docs/architecture.md | Target design, boundaries, staged structure |
 | docs/jd-map.md | Captured role and evidence mapping |
 | docs/operating-manual.md | How Bryan and AI collaborate |
-| docs/learning/README.md | Competencies and observed understanding |
+| docs/learning/README.md | Competency states and assessment index |
+| docs/daily/YYYY-MM-DD.md | Dated history, decisions, learning evidence, and session plans |
 | docs/walkthroughs/ | Explanations of implemented behavior |
 | docs/experiments.md | Experiment and report requirements |
-| docs/decisions.md | Rationale and superseded choices |
+| docs/decisions.md | Index to dated rationale and superseded choices |
 | CLAUDE.md | Claude Code shim: imports this file plus a repo/code orientation map |
 
 Do not duplicate the roadmap or status in this file. Historical dates and machine capacity readings must not be presented as current measurements.

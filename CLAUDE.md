@@ -47,5 +47,5 @@ A local `.venv` already exists. Invoke its interpreter directly rather than acti
 ## Working norms that are easy to miss
 
 - Keep **planned / implemented / verified / measured** distinct in every doc and claim. Never record an answer or understanding Bryan did not actually give (docs/learning/README.md).
-- Session finish: update docs/status.md (changes, exact check results, next step), add a docs/history.md entry, add docs/decisions.md entries for consequential choices, and write a walkthrough in docs/walkthroughs/ for substantial features.
+- Session finish: update docs/status.md (changes, exact check results, next step), add dated history, decisions, and learning evidence to docs/daily/YYYY-MM-DD.md, and write a walkthrough in docs/walkthroughs/ for substantial features. Keep docs/history.md and docs/decisions.md as indexes.
 - Commit or push only when Bryan asks. Real datasets live outside the repo (data/ is git-ignored); read docs/privacy.md before touching real GPS or video.

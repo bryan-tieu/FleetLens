@@ -1,46 +1,6 @@
 # FleetLens history
 
-## 2026-09-28 — migrate context with fresh code and independent history
+Dated history entries live in the daily files. This page is the chronological index.
 
-- Preserved the destination's README-only initial commit f733f84; imported no FleetLoop Git ancestry.
-- Transferred the revised AI-assisted engineering/learning guidance and job-aligned roadmap.
-- Reset implementation status and the first session plan to reflect a documentation-only repository.
-- Archived source documentation with provenance and hashes, including the pre-existing learning-note edits, while leaving FleetLoop untouched.
-- Did not copy source modules, datasets, junctions, caches, virtual environments, dependency pins, or Claude-specific workflows.
-- No engineering performance result or learning assessment is claimed.
-- See migration.md for transfer and verification details.
-- Migration verification passed: 49 Markdown files with resolving local links, 26 matching archive hashes, unchanged posting/source files, and no transferred implementation or source Git ancestry.
-
-## 2026-09-29 — implement the first executable foundation
-
-- Added installable Python 3.11 package, canonical sample/provenance contracts, and 59 passing validation cases.
-- Pinned development/build dependencies; added Windows/Linux CI configuration, README setup commands, and a sample walkthrough.
-- Verified fresh editable install, lint/format, dependency consistency, wheel build, and isolated wheel import on Windows 3.11.9.
-- Hosted CI and Linux remain unverified; no data services started or external publication performed.
-- Learning walkthrough delivered; teach-back pending. M0 generator/CLI/independent fixture expectations are next.
-
-## 2026-09-29 — record hosted CI and add Claude Code orientation
-
-- Confirmed via the public GitHub API that Actions run 36535425818 on b95a2af passed on windows-latest and ubuntu-latest; updated README, status, decisions, JD row 9, walkthrough, and session notes that still said hosted CI was unverified.
-- Added CLAUDE.md, which imports AGENTS.md and adds a code map, contract invariants, and commands for fresh Claude Code sessions. It is not a new workflow and does not own status or roadmap.
-- Corrected stale environment, walkthrough-index, and session-index text. No code or behavior changed; local checks rerun: 59 passed, Ruff and Black clean.
-
-## 2026-09-29 — add reproducible M0 synthetic fixture
-
-- Added per-vehicle hash assignment, validated scenario weights, fixed synthetic templates, canonical sample generation, and a JSONL/manifest CLI.
-- Froze a separate two-drive oracle: one hard-brake window [1, 3), one excluded [2, 5) gap, and 66 m / eight seconds valid exposure by hand calculation.
-- Local macOS Python 3.11.16 checks passed: 64 tests, Ruff, Black, pip dependency consistency, and diff whitespace. New hosted CI run is pending; no real fleet data or service was used.
-- Documented the generated-record trace and optional teach-back. M0 implementation is complete locally; the next work is M1 ingestion and quarantine.
-
-## 2026-09-29 — set up OpenRig pair and expand M0 teaching
-
-- Installed Node 22.23.3, tmux 3.7c, OpenRig 0.6.1 and Codex CLI 0.159.0; preserved Node 24 as default and verified existing login.
-- Added FleetLens owner/reviewer specs, teaching culture, Node-selecting wrapper and runbook. Backed up existing settings privately before daemon startup and preserved original AGENTS.md content beneath OpenRig's marked additions.
-- Launch plan and doctor checks passed; two native GPT-6-Sol seats reached ready/idle. Setup message and mailbox ACK succeeded with one-time approvals; direct reply was blocked while the owner awaited a prompt. No M1 implementation was assigned.
-- Expanded the M0 walkthrough with units, row grain, identity, hashing, pure transforms, hand-calculated exposure, and the limits of test evidence. Assessment remains pending.
-
-## 2026-09-29 — prepare M0 and OpenRig work for PC handoff
-
-- Removed OpenRig's generated startup blocks from AGENTS.md before commit, retaining the original project instructions; versioned rig definitions and runbook stay in the repository.
-- Wrote JSONL as UTF-8 bytes so the manifest SHA-256 covers the exact bytes on Windows as well as macOS. This was found during pre-push review; the M0 tests, Ruff, Black and wheel build passed after the fix.
-- Bryan supplied teach-back answers on unit repair and the exposure denominator; actual wording, correction and remaining assessment gaps are in the learning ledger.
+- [2026-09-28 — migration and fresh-code start](daily/2026-09-28.md#history)
+- [2026-09-29 — Python foundation, hosted CI, synthetic fixture, OpenRig setup, and PC handoff](daily/2026-09-29.md#history)

@@ -42,10 +42,10 @@ understanding. Startup is orientation only; task assignment is explicit.
 
 After a feature, aim to answer: What problem does it solve? What are its inputs and outputs? What makes the result correct? How can it fail? Why this design? What would change at larger scale?
 
-Progress is recorded in [learning/README.md](learning/README.md), with optional Q&A in [interview/](interview/README.md). Missing understanding is a review item, not a failure or a reason to stop all implementation. Targeted Python/SQL practice should strengthen independence.
+Competency states are recorded in [learning/README.md](learning/README.md), with dated answers in [daily/](daily/README.md) and optional Q&A in [interview/](interview/README.md). Missing understanding is a review item, not a failure or a reason to stop all implementation. Targeted Python/SQL practice should strengthen independence.
 
 ## Ending or switching sessions
 
-The assistant updates [status.md](status.md), relevant decisions/history, and a feature walkthrough when useful. It records actual check results, pending questions, and existing user edits. In a fresh session, start from AGENTS.md and status.md.
+The assistant updates [status.md](status.md), the dated [daily record](daily/README.md), and a feature walkthrough when useful. It records actual check results, pending questions, and existing user edits. In a fresh session, start from AGENTS.md and status.md.
 
 Do not paste private dataset rows, credentials, or identifying traces into a walkthrough. Do not call planned functionality complete. The migration archive contains historical reference only; old workflows are not installed.

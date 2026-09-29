@@ -30,7 +30,7 @@ The old repository and its working tree remain untouched. Do not delete or clean
 
 ## Active starting point
 
-Read [../AGENTS.md](../AGENTS.md), [status.md](status.md), and [daily/session-01.md](daily/session-01.md).
+Read [../AGENTS.md](../AGENTS.md), [status.md](status.md), and the [first session plan](daily/2026-09-29.md#session-plan).
 There is no runnable FleetLens application yet. The first task is an installable Python foundation and explicit telemetry contracts.
 
 All learning states remain not assessed. Use future walkthroughs, debugging, and bounded changes to establish understanding. Do not infer understanding or professional experience from this transfer.
