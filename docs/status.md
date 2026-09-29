@@ -50,6 +50,10 @@ live in their [history](history.md), [decision](decisions.md), and [learning](le
   records the documentation checks: all six prior topic/date sections were
   preserved, links in 31 active Markdown files resolved, and `git diff --check`
   passed. No code checks were needed for this documentation change.
+- The project instructions now explicitly require engineering explanations,
+  decision rationale, and a concrete record walkthrough during each substantial
+  increment, rather than waiting for a milestone recap. This docs-only update
+  passed `git diff --check` and a local-link scan of 32 active Markdown files.
 
 ## Local resources
 

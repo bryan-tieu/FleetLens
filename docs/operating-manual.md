@@ -19,6 +19,8 @@ Understanding is built in layers. First explain the purpose and data flow, then 
 
 A documentation/refactoring session may prove consistency rather than produce a performance number. Experiments need honest measurements; ordinary work need not invent comparisons to justify itself.
 
+Decisions are recorded when an increment makes them, not held until a milestone ends. A consequential choice goes into the day's [decision file](decisions.md) with its reason, a viable alternative, the limit of the current approach, and the condition for revisiting it. A substantial feature gets a [walkthrough](walkthroughs/README.md) that follows one real project record through the relevant code or SQL, explains the invariants and failure path, and names what has actually been verified. Milestone summaries can point back to these records; they do not replace them.
+
 ## Prompts you can use
 
 - "Continue the next task in docs/status.md. Implement it and explain the important decisions as you go."

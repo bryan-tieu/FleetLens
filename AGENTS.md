@@ -20,6 +20,7 @@ This file is the project-wide agent entry point. The latest user instructions ta
 
 - Before a meaningful change, explain the problem, the input/output contract, the main choice, and one useful alternative in plain language.
 - Build small, coherent increments. Connect each increment to a roadmap acceptance criterion; avoid giant unexplained code drops and unnecessary approval pauses.
+- Explain the engineering while building each increment, not only in a milestone recap. Show how data enters, which contract or invariant each boundary enforces, where state is written, how failures are handled, and why the chosen design fits the current scale. Tie important code and SQL to one concrete example.
 - After implementation, trace one concrete record or request through the code. Identify the main files, why the result is correct, and one failure mode.
 - Explain domain terms on first use. Layer explanations: purpose, example, implementation, tradeoff, then what changes at larger scale.
 - Propose a short teach-back or debugging exercise after a meaningful feature. Ask at most a few questions together. Do not block otherwise authorized work waiting for an optional learning response.
@@ -48,9 +49,9 @@ This file is the project-wide agent entry point. The latest user instructions ta
 
 ## Session finish and persistent context
 
-Update docs/status.md with what changed, exact checks and results, unresolved issues, and one concrete next step. Add meaningful history to `docs/history/YYYY-MM-DD.md` and consequential decisions to `docs/decisions/YYYY-MM-DD.md`; keep docs/history.md and docs/decisions.md as indexes. Update JD evidence only when an artifact supports it.
+Document each completed increment as it happens; do not wait for a milestone. Update docs/status.md with what changed, exact checks and results, unresolved issues, and one concrete next step. Add meaningful history to `docs/history/YYYY-MM-DD.md` and consequential decisions to `docs/decisions/YYYY-MM-DD.md`; include the choice, reason, alternative, limitation, and what would trigger a revision. Keep docs/history.md and docs/decisions.md as indexes. Update JD evidence only when an artifact supports it.
 
-For substantial features, write a walkthrough under docs/walkthroughs/ and update the learning ledger with the actual assessment state. Do not manufacture Bryan's answers. Keep handoffs useful even when a session ends mid-feature. Report remaining processes/resources you started; do not stop unrelated services.
+For each substantial feature, write a walkthrough under docs/walkthroughs/ before calling the increment complete. Cover purpose, inputs/outputs, a concrete record trace through the main code/SQL, correctness checks, failure handling, design tradeoff, and scale limit. Update the learning ledger with the actual assessment state. Do not manufacture Bryan's answers. Keep handoffs useful even when a session ends mid-feature. Report remaining processes/resources you started; do not stop unrelated services.
 
 ## Documentation ownership
 
