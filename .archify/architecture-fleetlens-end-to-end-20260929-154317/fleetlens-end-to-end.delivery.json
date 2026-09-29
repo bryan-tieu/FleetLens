@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "cbf2e775-83fb-442a-9999-91a716fa589b",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/brybry.o_o/FleetLens/.archify/architecture-fleetlens-end-to-end-20260929-154317/candidate.json",
+  "output": "/Users/brybry.o_o/FleetLens/.archify/architecture-fleetlens-end-to-end-20260929-154317/fleetlens-end-to-end.html",
+  "specification": {
+    "sha256": "117178462ebb01c832b29881ce46c9c52905935095c4737bd120b3eadabf6d62",
+    "bytes": 10092
+  },
+  "artifact": {
+    "sha256": "b17c21b7398f5fe862ed1aaaf85c06d61d0329b278a6585b60663cecf67be4e0",
+    "bytes": 773808
+  }
+}

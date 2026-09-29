@@ -30,6 +30,8 @@ Later milestones add reliability and orchestration, upload admission under a byt
 
 The repository includes the [Archify agent skill](.agents/skills/archify/SKILL.md) for source-backed architecture, workflow, sequence, data-flow, and lifecycle diagrams. Ask your coding agent to use Archify for a diagram; the skill creates a checked, standalone HTML file from typed JSON. Node.js 18 or newer is required. To check the local package, run `node .agents/skills/archify/bin/archify.mjs doctor` from the repository root. The vendored package is upstream v3.0.1; update it deliberately from its [source repository](https://github.com/tt-a1i/archify), rather than changing its files in place.
 
+Open the [current source-to-explorer map](.archify/architecture-fleetlens-end-to-end-20260929-154317/fleetlens-end-to-end.html) and its [engineering walkthrough](docs/walkthroughs/05-architecture-map.md). The diagram marks implemented code and planned M1 components separately.
+
 ## Running the project
 
 The initial supported interpreter is Python 3.11 (verified locally on Windows with 3.11.9). From the repository root in PowerShell:

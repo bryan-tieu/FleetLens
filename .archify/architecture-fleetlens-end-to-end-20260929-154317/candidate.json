@@ -1,0 +1,481 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "FleetLens telemetry: source to explorer",
+    "subtitle": "Current local implementation and clearly marked M1 plans",
+    "output": ".archify/architecture-fleetlens-end-to-end-20260929-154317/fleetlens-end-to-end.html",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/bryan-tieu/FleetLens.git",
+      "revision": "14f4b6d3ee5c968ac5b44b4695c7d6e704ef1b55",
+      "link_mode": "local-only"
+    }
+  },
+  "components": [
+    {
+      "id": "generator",
+      "type": "backend",
+      "label": "Synthetic generator",
+      "sublabel": "CURRENT \u00b7 seeded",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/simulation/generator.py",
+          "line": 53,
+          "end_line": 71
+        },
+        {
+          "path": "src/fleetlens/simulation/generator.py",
+          "line": 100,
+          "end_line": 127
+        }
+      ],
+      "pos": [
+        35,
+        120
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "snapshot",
+      "type": "database",
+      "label": "JSONL + manifest",
+      "sublabel": "CURRENT \u00b7 hashed",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/cli.py",
+          "line": 62,
+          "end_line": 78
+        }
+      ],
+      "pos": [
+        245,
+        120
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "reader",
+      "type": "security",
+      "label": "Snapshot validator",
+      "sublabel": "CURRENT \u00b7 gates",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/ingestion/jsonl.py",
+          "line": 122,
+          "end_line": 151
+        },
+        {
+          "path": "src/fleetlens/ingestion/jsonl.py",
+          "line": 189,
+          "end_line": 220
+        }
+      ],
+      "pos": [
+        455,
+        120
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "reportCli",
+      "type": "backend",
+      "label": "Validation command",
+      "sublabel": "CURRENT \u00b7 writes",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/ingestion/cli.py",
+          "line": 11,
+          "end_line": 38
+        }
+      ],
+      "pos": [
+        455,
+        320
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "loadCli",
+      "type": "backend",
+      "label": "ClickHouse loader",
+      "sublabel": "CURRENT \u00b7 validates",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/storage/cli.py",
+          "line": 12,
+          "end_line": 22
+        }
+      ],
+      "pos": [
+        665,
+        120
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "quarantine",
+      "type": "database",
+      "label": "Quarantine + report",
+      "sublabel": "CURRENT \u00b7 row log",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/ingestion/cli.py",
+          "line": 20,
+          "end_line": 33
+        }
+      ],
+      "pos": [
+        245,
+        320
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "raw",
+      "type": "database",
+      "label": "ClickHouse raw rows",
+      "sublabel": "CURRENT \u00b7 append-only",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/storage/clickhouse.py",
+          "line": 189,
+          "end_line": 208
+        },
+        {
+          "path": "src/fleetlens/storage/migrations/001_raw_samples.sql",
+          "line": 3,
+          "end_line": 23
+        }
+      ],
+      "pos": [
+        665,
+        320
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "logical",
+      "type": "database",
+      "label": "Logical samples",
+      "sublabel": "CURRENT \u00b7 guarded view",
+      "tag": "CURRENT",
+      "sources": [
+        {
+          "path": "src/fleetlens/storage/migrations/002_logical_samples.sql",
+          "line": 8,
+          "end_line": 23
+        },
+        {
+          "path": "src/fleetlens/storage/clickhouse.py",
+          "line": 170,
+          "end_line": 187
+        }
+      ],
+      "pos": [
+        665,
+        520
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "events",
+      "type": "backend",
+      "label": "Hard-brake episodes",
+      "sublabel": "PLANNED \u00b7 episode rule",
+      "tag": "PLANNED",
+      "sources": [
+        {
+          "path": "docs/architecture.md",
+          "line": 6,
+          "end_line": 16
+        },
+        {
+          "path": "docs/roadmap.md",
+          "line": 17,
+          "end_line": 27
+        }
+      ],
+      "pos": [
+        455,
+        720
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "exposure",
+      "type": "backend",
+      "label": "Valid exposure",
+      "sublabel": "PLANNED \u00b7 gap-aware",
+      "tag": "PLANNED",
+      "sources": [
+        {
+          "path": "docs/architecture.md",
+          "line": 6,
+          "end_line": 16
+        },
+        {
+          "path": "docs/roadmap.md",
+          "line": 17,
+          "end_line": 27
+        }
+      ],
+      "pos": [
+        665,
+        720
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "metrics",
+      "type": "backend",
+      "label": "Stratified metric",
+      "sublabel": "PLANNED \u00b7 rate",
+      "tag": "PLANNED",
+      "sources": [
+        {
+          "path": "docs/architecture.md",
+          "line": 6,
+          "end_line": 16
+        }
+      ],
+      "pos": [
+        455,
+        920
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "Bounded API",
+      "sublabel": "PLANNED \u00b7 read API",
+      "tag": "PLANNED",
+      "sources": [
+        {
+          "path": "docs/architecture.md",
+          "line": 6,
+          "end_line": 18
+        },
+        {
+          "path": "docs/roadmap.md",
+          "line": 17,
+          "end_line": 27
+        }
+      ],
+      "pos": [
+        665,
+        920
+      ],
+      "size": [
+        130,
+        66
+      ]
+    },
+    {
+      "id": "explorer",
+      "type": "frontend",
+      "label": "React explorer",
+      "sublabel": "PLANNED \u00b7 trace UI",
+      "tag": "PLANNED",
+      "sources": [
+        {
+          "path": "docs/architecture.md",
+          "line": 6,
+          "end_line": 18
+        },
+        {
+          "path": "docs/roadmap.md",
+          "line": 17,
+          "end_line": 27
+        }
+      ],
+      "pos": [
+        665,
+        1120
+      ],
+      "size": [
+        130,
+        66
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "makeSnapshot",
+      "from": "generator",
+      "to": "snapshot",
+      "variant": "emphasis",
+      "label": "JSONL"
+    },
+    {
+      "id": "verifySnapshot",
+      "from": "snapshot",
+      "to": "reader",
+      "variant": "emphasis",
+      "label": "hash check"
+    },
+    {
+      "id": "invalidRows",
+      "from": "reader",
+      "to": "reportCli",
+      "variant": "security",
+      "label": "rejected"
+    },
+    {
+      "id": "writeQuarantine",
+      "from": "reportCli",
+      "to": "quarantine",
+      "variant": "security",
+      "label": "safe files"
+    },
+    {
+      "id": "acceptedRows",
+      "from": "reader",
+      "to": "loadCli",
+      "variant": "emphasis",
+      "label": "accepted"
+    },
+    {
+      "id": "appendRows",
+      "from": "loadCli",
+      "to": "raw",
+      "variant": "emphasis",
+      "label": "insert"
+    },
+    {
+      "id": "dedupeRows",
+      "from": "raw",
+      "to": "logical",
+      "variant": "emphasis",
+      "label": "dedupe"
+    },
+    {
+      "id": "eventInput",
+      "from": "logical",
+      "to": "events",
+      "variant": "dashed",
+      "label": "episodes",
+      "fromSide": "left",
+      "toSide": "top",
+      "via": [
+        [
+          620,
+          553
+        ],
+        [
+          620,
+          650
+        ],
+        [
+          520,
+          650
+        ]
+      ]
+    },
+    {
+      "id": "exposureInput",
+      "from": "logical",
+      "to": "exposure",
+      "variant": "dashed",
+      "label": "intervals"
+    },
+    {
+      "id": "eventMetric",
+      "from": "events",
+      "to": "metrics",
+      "variant": "dashed",
+      "label": "count"
+    },
+    {
+      "id": "exposureMetric",
+      "from": "exposure",
+      "to": "metrics",
+      "variant": "dashed",
+      "label": "distance"
+    },
+    {
+      "id": "serveMetric",
+      "from": "metrics",
+      "to": "api",
+      "variant": "dashed",
+      "label": "query"
+    },
+    {
+      "id": "showViews",
+      "from": "api",
+      "to": "explorer",
+      "variant": "dashed",
+      "label": "views"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "What runs now",
+      "items": [
+        "Generation, snapshot validation, standalone quarantine, and ClickHouse storage are current committed code.",
+        "The loader reads the same validated input, appends accepted rows, and reports rejected counts without writing quarantine.jsonl."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Failure branches",
+      "items": [
+        "A bad manifest, hash, or row count aborts the snapshot before row quarantine.",
+        "Invalid rows get safe reasons in quarantine.jsonl only when the standalone validation command is run.",
+        "The loader reports rejected counts but does not persist quarantine.jsonl. Changed payloads for one source key block guarded logical reads."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Next M1 slice",
+      "items": [
+        "Episodes and exposure must be derived independently from logical samples.",
+        "The fixture's one episode and 66 m denominator are hand-calculated expectations, not implemented metric output.",
+        "The API and React explorer are target components, not running services."
+      ]
+    }
+  ]
+}
