@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Node 22 is OpenRig's recommended Apple silicon runtime. Keep the user's
+# default Node version unchanged, and forward every argument without re-parsing.
+exec fnm exec --using=22 rig "$@"

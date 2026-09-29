@@ -29,3 +29,20 @@ Each consequential choice records why, the alternative, its limitations, and wha
 - **Identity:** dataset + snapshot + vehicle + drive + source sequence; decoding corrections retain source identity. Revision and replay behavior remain an ingestion decision.
 - **Alternative:** a runtime schema library is appropriate when JSON/API ingestion warrants it. At larger volume, batch validation must preserve these semantics and reconcile rejected records.
 - **Status:** locally verified; hosted Windows/Linux CI passed 2026-09-29 (run 36535425818). Physical realism, deduplication, and all source-adapter behavior remain unverified/unimplemented.
+
+## 2026-09-29 — stable synthetic assignment and frozen tiny oracle
+
+- **Choice:** derive each scenario draw from SHA-256 of seed and vehicle ID, sort output IDs, and use fixed small SI-unit templates. The two-drive oracle is a separate checked-in JSON file with event/exposure rules and hand calculations.
+- **Why:** fleet growth and caller order do not perturb an existing vehicle; the oracle can test future metrics without asking the generator or miner for its own answer.
+- **Alternative:** a shared seeded random stream is simpler but shifts every later assignment when an earlier vehicle is inserted. A complex physics simulator would add unvalidated assumptions before an ingestion and metric path exists.
+- **Limits:** the scenario weights and shapes are invented. A 64-bit hash draw gives deterministic assignment but no claim about real fleet prevalence. The fixture's acceleration interval and gap rules are frozen for future M1 evaluation; any change requires an explicit version and restatement.
+- **Status:** implemented and locally verified on macOS Python 3.11.16; hosted CI for this increment is pending.
+
+## 2026-09-29 — supervised OpenRig development pair
+
+- **Choice:** at Bryan's request, install OpenRig 0.6.1 with two Codex seats: an implementer and an independent reviewer. Use a local FleetLens rig with the existing teaching contract and inherited native model, leaving support/kernel agents off.
+- **Why:** try independent review on bounded increments while preserving Bryan's record tracing and design explanations. Tooling is separate from the FleetLens product and is not evidence of an agent-facing analytics feature.
+- **Alternative:** use one coding session with an occasional separate review. That remains simpler if native prompts and coordination consume more effort than the review saves.
+- **Permissions:** retain workspace sandbox and ordinary approval prompts; no persistent command allowlist or broader network permission was added. One-time local-daemon approvals exposed a prompt/message collision; the built-in mailbox accepted the ACK.
+- **Limits:** two ready seats and a delivered setup acknowledgement prove startup/communication, not review quality or faster development. A complete implementation/review queue cycle and recovery after reboot remain unverified.
+- **Status:** running locally. See [OpenRig runbook](openrig.md) for installed versions, backup location, operating commands, and how to stop the pair.

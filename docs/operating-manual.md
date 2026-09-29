@@ -30,6 +30,14 @@ A documentation/refactoring session may prove consistency rather than produce a 
 
 These are ordinary requests. No slash commands or Claude-specific skills are required.
 
+## Optional OpenRig pair
+
+The [OpenRig runbook](openrig.md) describes the local implementer/reviewer pair.
+The owner implements and teaches; the reviewer checks the actual candidate and
+returns findings. Use one bounded task at a time. The same learning contract
+applies: agent agreement and passing checks do not demonstrate Bryan's
+understanding. Startup is orientation only; task assignment is explicit.
+
 ## Learning check
 
 After a feature, aim to answer: What problem does it solve? What are its inputs and outputs? What makes the result correct? How can it fail? Why this design? What would change at larger scale?

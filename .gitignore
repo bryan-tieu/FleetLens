@@ -42,6 +42,9 @@ dagster_home/
 # ── Claude Code user-local settings
 .claude/settings.local.json
 
+# ── OpenRig generated workspace state (auth/config backups stay outside Git)
+.openrig/
+
 # ── OS / editor
 .DS_Store
 Thumbs.db

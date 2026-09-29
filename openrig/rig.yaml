@@ -1,0 +1,23 @@
+version: "0.2"
+name: fleetlens
+summary: FleetLens implementer and independent reviewer, with teaching at each increment.
+culture_file: CULTURE.md
+pods:
+  - id: dev
+    label: FleetLens
+    members:
+      - id: owner
+        agent_ref: "local:agents/owner"
+        runtime: codex
+        profile: default
+        cwd: "."
+      - id: check
+        agent_ref: "local:agents/check"
+        runtime: codex
+        profile: default
+        cwd: "."
+    edges:
+      - kind: delegates_to
+        from: owner
+        to: check
+edges: []

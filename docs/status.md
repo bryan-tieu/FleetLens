@@ -1,47 +1,52 @@
 # Current status
 
-Updated 2026-09-29 (CI result recorded later that day). Repository: FleetLens. This is the single session handoff.
+Updated 2026-09-29. Repository: FleetLens. This is the single session handoff.
 
 ## Current state
 
-- Initial M0 increment implemented: installable `src/fleetlens/` package and immutable, validated signal/sample/provenance contracts.
-- Python 3.11 is the initial supported minor version; local interpreter verified as 3.11.9 on Windows.
-- Runtime has no third-party dependencies. Development/build dependencies are fully version-pinned in requirements-dev.txt; pins are not artifact hashes.
-- 59 validation cases pass. GitHub Actions workflow covers Windows/Linux installation, tests, Ruff, Black, dependency consistency, and wheel build. Hosted run 36535425818 on b95a2af passed on windows-latest and ubuntu-latest.
-- No generator, application CLI, ingestion/quarantine, database, event/exposure calculations, frontend, or services exist yet. M0 remains incomplete.
-- Source identity is defined; storage replay/deduplication is not implemented.
-- Walkthrough delivered in [walkthroughs/01-python-foundation.md](walkthroughs/01-python-foundation.md). Learning assessment remains pending; no answers from Bryan recorded.
+- M0 implemented locally: installable Python 3.11 package, validated immutable sample/provenance contracts, stable per-vehicle scenario assignment, a fixed two-drive fixture, and a reproducible JSONL/manifest CLI.
+- The [tiny oracle](../tests/fixtures/tiny_expected.json) freezes one synthetic hard-braking episode over [1, 3), excludes the gap [2, 5), and expects 66 m of valid distance over eight seconds. These are independent hand calculations for future M1 metric tests, not miner output or real-fleet evidence.
+- Local macOS 3.11.16 checks pass (64 tests). The previous foundation passed hosted Windows/Linux CI run 36535425818 on b95a2af; the new generator has not yet had a hosted CI run.
+- No ingestion/quarantine, database, event/exposure transforms, frontend, or services exist. Sample identity is defined; storage replay/deduplication is not implemented.
+- [Generator walkthrough](walkthroughs/02-synthetic-fixture.md) delivered. Bryan supplied a partial teach-back on units and exposure; the [learning ledger](learning/README.md) records his actual answer and the remaining corrections.
+- OpenRig development pair configured on this Mac: owner and independent reviewer, both using Codex/GPT-6-Sol. [Runbook](openrig.md) covers use, approvals, stop/resume and boundaries. Both reached ready/idle; no M1 task was assigned.
 
 ## Verification
 
-Executed locally with `.venv/Scripts/python.exe`:
+This session on macOS Python 3.11.16, in a new `.venv`:
 
-- `-m pip install -r requirements-dev.txt`: successful in a newly created environment.
-- `-m pip install --no-build-isolation --no-deps -e .`: successful.
-- `-m pytest`: 59 passed.
-- `-m ruff check .`: all checks passed.
-- `-m black --check src tests`: four files unchanged after formatting.
-- `-m pip check`: no broken requirements.
-- `-m pip wheel --no-build-isolation --no-deps . --wheel-dir dist`: successful.
-- Wheel installed offline with `--no-index --no-deps` into a second fresh environment at runs/package-check. Its interpreter with `-I` imported version 0.1.0 from site-packages, including public contract exports.
-- First smoke-test one-liner failed because PowerShell stripped embedded quotes; rerunning the same assertions through literal stdin passed. No package failure was found.
+- Pinned development dependencies installed and editable package installed successfully.
+- `.venv/bin/python -m pytest -q`: 64 passed.
+- `.venv/bin/python -m ruff check .`: passed.
+- `.venv/bin/python -m black --check src tests`: passed after formatting.
+- `.venv/bin/python -m pip check`: no broken requirements.
+- `git diff --check`: passed.
+- `.venv/bin/python -m fleetlens.cli --output runs/tiny --fixture`: wrote 11 synthetic samples and a manifest. Before commit, changed JSONL writing to bytes so the manifest hash matches the file on Windows; rerun checks are recorded below.
+- Initial system-Python checks could not run because pytest/Ruff/Black were absent; initial sandboxed dependency install could not reach PyPI. An approved network install into the local `.venv` succeeded.
 
-Pre-commit verification on 2026-09-29: `-B -m pytest -p no:cacheprovider` (59 passed), `-m ruff check --no-cache .`, `-m black --check src tests`, `-m pip check`, and `git diff --check` all passed. Bryan authorized committing and pushing this foundation to origin/main.
+No real dataset was read. No throughput, fleet behavior, or cloud performance was measured. CLI output is tested for same-machine byte identity, not cross-platform byte identity.
 
-Foundation commits are pushed; local main matched origin/main at b95a2af. Hosted GitHub Actions run 36535425818 (2026-09-29T07:14Z) completed successfully on both matrix jobs, read via the public GitHub API. Local Linux remains unverified.
+OpenRig setup verification later this session:
 
-No real dataset was read. No throughput, fleet behavior, or cloud performance was measured.
+- Installed Node 22.23.3 alongside the existing Node 24 default, tmux 3.7c, OpenRig 0.6.1 and standalone Codex CLI 0.159.0. Existing ChatGPT login worked.
+- Launch plan passed. Initial plan rejected an obsolete empty `hooks` field from installed example documentation; changing it to `plugins` fixed validation before launch.
+- `./scripts/openrig doctor --spec openrig/rig.yaml --json`: healthy, matching one pod/two seats. Optional warnings: cmux absent and tmux mouse mode disabled.
+- Both native terminals report GPT-6-Sol and both sessions read project instructions. Owner-to-reviewer setup message delivered; reviewer ACK stored in owner mailbox `inbox-20260929175138-33734288`.
+- Native sandbox blocked local daemon access. One-time approvals completed the setup checks. Direct ACK delivery encountered the owner's permission prompt; mailbox delivery succeeded. No permanent allow rules or broader network access were configured.
+- Full implementation/review queue lifecycle and reboot recovery are not tested. The setup is supervised; local coordination may require prompts.
+- `bash -n scripts/openrig` and `git diff --check`: passed after removing generated trailing blank lines. Backup comparison confirmed original AGENTS.md prefix, existing MCP settings and native model retained. Codex also recorded its TUI screen-reader detection flag during first launch.
+- Expanded M0 walkthrough teaching points. Bryan later supplied a partial assessment answer; Python product code did not change during OpenRig setup or that assessment. The 64-test result above is from the preceding M0 verification.
+
+Pre-push verification after the Windows newline fix: `.venv/bin/python -m pytest -q` (64 passed), Ruff (passed), Black check (passed), `git diff --check` (passed), and wheel build (passed; wheel contains the CLI entry point and simulation package). Local macOS checks do not substitute for the pending hosted Windows/Linux CI run on the new commit.
 
 ## Local resources
 
-Ignored .venv, dist/build packaging artifacts, and runs/package-check remain for development and inspection. No background services or containers were started.
+Ignored `.venv`, `runs/tiny`, and `runs/fleet-10` remain for development. OpenRig daemon PID 67206 is listening on `127.0.0.1:7433`; tmux seats `dev-owner@fleetlens` and `dev-check@fleetlens` remain running and idle. No support/kernel agents or containers were started. Private prelaunch backups are under `~/.local/state/fleetlens-openrig-backups/20260929T174450Z/`. OpenRig's generated AGENTS.md additions were removed before commit; its managed Codex hooks/workspace trust remain in local user settings.
 
 ## Next bounded task
 
-Complete the next M0 increment: stable per-vehicle random assignment, a tiny synthetic drive fixture, independent event-window/exposure expectations, and a reproducible CLI. Test stability across fleet-size and ordering changes; keep evaluation truth separate from selection inputs.
-
-Then introduce local ClickHouse for M1's validated loading and query requirements.
+Begin M1 with explicit JSONL ingestion validation and quarantine: parse the CLI's sample/manifest format, reconcile accepted and rejected rows, preserve source identity and reasons, and test malformed rows and replay inputs. Then introduce local ClickHouse with a schema designed around the validated sample grain and bounded queries.
 
 ## Source reference
 
-[Migration record](migration.md) documents the independent initial commit f733f84 and preserved FleetLoop context. No source code or Git ancestry was copied from FleetLoop. Archived behavior and hardware/dataset observations remain historical.
+[Migration record](migration.md) documents independent initial commit f733f84 and preserved FleetLoop context. No source code or Git ancestry was copied from FleetLoop. Archived behavior and hardware/dataset observations remain historical.

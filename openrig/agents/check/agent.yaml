@@ -1,0 +1,21 @@
+name: fleetlens-check
+version: "1.0"
+description: Independently checks the owner's candidate against its stated behavior.
+profiles:
+  default:
+    uses:
+      skills: []
+      guidance: []
+      subagents: []
+      plugins: []
+      runtime_resources: []
+resources:
+  guidance:
+    - id: role
+      path: role.md
+startup:
+  files:
+    - path: role.md
+      delivery_hint: send_text
+      required: true
+  actions: []
