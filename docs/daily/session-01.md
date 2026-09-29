@@ -1,6 +1,6 @@
 # Session 01 — establish the FleetLens Python foundation
 
-Status: implemented and locally verified 2026-09-29; hosted CI remains unverified. Roadmap M0 initial increment; JD rows 9 and 10. See [current status](../status.md) and [walkthrough](../walkthroughs/01-python-foundation.md).
+Status: implemented and verified 2026-09-29, locally and in hosted Windows/Linux CI. Roadmap M0 initial increment; JD rows 9 and 10. See [current status](../status.md) and [walkthrough](../walkthroughs/01-python-foundation.md).
 
 ## Outcome
 

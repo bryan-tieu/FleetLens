@@ -2,7 +2,7 @@
 
 A fleet telemetry platform for reliable ingestion, driving-event analysis, and diversity-aware data selection.
 
-**Status: Python foundation implemented and locally verified.** Installable package, canonical telemetry contracts, 59 passing validation cases, pinned development dependencies, and a Windows/Linux CI workflow. Hosted CI has not run yet. Generator, ingestion, database, and explorer remain planned.
+**Status: Python foundation implemented and locally verified.** Installable package, canonical telemetry contracts, 59 passing validation cases, pinned development dependencies, and a Windows/Linux CI workflow that passes on GitHub Actions. Generator, ingestion, database, and explorer remain planned.
 
 ## Purpose
 
@@ -16,7 +16,7 @@ Later milestones add reliability and orchestration, upload admission under a byt
 
 ## Start here
 
-- [AGENTS.md](AGENTS.md): persistent instructions for coding sessions.
+- [AGENTS.md](AGENTS.md): persistent instructions for coding sessions ([CLAUDE.md](CLAUDE.md) imports it for Claude Code).
 - [Current status](docs/status.md): what exists and the next task.
 - [First implementation session](docs/daily/session-01.md): the clean foundation plan.
 - [Roadmap](docs/roadmap.md): job-aligned milestones and acceptance criteria.
@@ -40,7 +40,7 @@ py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip wheel --no-build-isolation --no-deps . --wheel-dir dist
 ```
 
-Stop if a command fails. Environment activation is optional; these commands use the environment interpreter directly. On Linux, use `python3.11` to create the environment and `.venv/bin/python` for subsequent commands; that platform is configured in CI but not locally verified.
+Stop if a command fails. Environment activation is optional; these commands use the environment interpreter directly. On Linux, use `python3.11` to create the environment and `.venv/bin/python` for subsequent commands; that platform passes in hosted CI but has not been verified on a local Linux machine.
 
 The package has no runtime dependencies. Development and build tools, including transitive dependencies, are pinned in `requirements-dev.txt`; install those before using `--no-build-isolation`. These are version pins, not a hash-locked supply chain or byte-for-byte build guarantee. Change pins deliberately and rerun checks.
 

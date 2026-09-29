@@ -1,13 +1,13 @@
 # Current status
 
-Updated 2026-09-29. Repository: FleetLens. This is the single session handoff.
+Updated 2026-09-29 (CI result recorded later that day). Repository: FleetLens. This is the single session handoff.
 
 ## Current state
 
 - Initial M0 increment implemented: installable `src/fleetlens/` package and immutable, validated signal/sample/provenance contracts.
 - Python 3.11 is the initial supported minor version; local interpreter verified as 3.11.9 on Windows.
 - Runtime has no third-party dependencies. Development/build dependencies are fully version-pinned in requirements-dev.txt; pins are not artifact hashes.
-- 59 validation cases pass. GitHub Actions workflow covers Windows/Linux installation, tests, Ruff, Black, dependency consistency, and wheel build. Hosted execution is not verified.
+- 59 validation cases pass. GitHub Actions workflow covers Windows/Linux installation, tests, Ruff, Black, dependency consistency, and wheel build. Hosted run 36535425818 on b95a2af passed on windows-latest and ubuntu-latest.
 - No generator, application CLI, ingestion/quarantine, database, event/exposure calculations, frontend, or services exist yet. M0 remains incomplete.
 - Source identity is defined; storage replay/deduplication is not implemented.
 - Walkthrough delivered in [walkthroughs/01-python-foundation.md](walkthroughs/01-python-foundation.md). Learning assessment remains pending; no answers from Bryan recorded.
@@ -28,7 +28,9 @@ Executed locally with `.venv/Scripts/python.exe`:
 
 Pre-commit verification on 2026-09-29: `-B -m pytest -p no:cacheprovider` (59 passed), `-m ruff check --no-cache .`, `-m black --check src tests`, `-m pip check`, and `git diff --check` all passed. Bryan authorized committing and pushing this foundation to origin/main.
 
-No real dataset was read. No throughput, fleet behavior, or cloud performance was measured. Hosted CI and Linux checks remain unavailable locally.
+Foundation commits are pushed; local main matched origin/main at b95a2af. Hosted GitHub Actions run 36535425818 (2026-09-29T07:14Z) completed successfully on both matrix jobs, read via the public GitHub API. Local Linux remains unverified.
+
+No real dataset was read. No throughput, fleet behavior, or cloud performance was measured.
 
 ## Local resources
 

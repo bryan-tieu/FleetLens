@@ -28,4 +28,4 @@ Each consequential choice records why, the alternative, its limitations, and wha
 - **Contract:** immutable dataclasses reject invalid types/domains; canonical speed uses m/s and forward longitudinal acceleration uses m/s². Source decoding is a separate future adapter responsibility.
 - **Identity:** dataset + snapshot + vehicle + drive + source sequence; decoding corrections retain source identity. Revision and replay behavior remain an ingestion decision.
 - **Alternative:** a runtime schema library is appropriate when JSON/API ingestion warrants it. At larger volume, batch validation must preserve these semantics and reconcile rejected records.
-- **Status:** locally verified. Hosted CI, physical realism, deduplication, and all source-adapter behavior remain unverified/unimplemented.
+- **Status:** locally verified; hosted Windows/Linux CI passed 2026-09-29 (run 36535425818). Physical realism, deduplication, and all source-adapter behavior remain unverified/unimplemented.

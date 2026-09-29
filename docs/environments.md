@@ -1,6 +1,6 @@
 # Development environments
 
-FleetLens has no verified Python environment yet. Start in C:\Users\Bryan\Downloads\FleetLens. M0 establishes and documents the supported interpreter, installation, and check commands.
+Supported interpreter: Python 3.11 (verified locally on Windows with 3.11.9; hosted CI passes on windows-latest and ubuntu-latest). Repository: C:\Users\Bryan\Downloads\FleetLens. Setup and check commands are in the [README](../README.md); a local .venv exists and is git-ignored.
 
 Windows is the intended canonical benchmark host; macOS may be used for development. Record hardware and software with each measurement and keep comparison conditions controlled. Historical versions, disk readings, paths, and CUDA claims from FleetLoop require fresh verification.
 

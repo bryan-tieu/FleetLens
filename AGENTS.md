@@ -14,7 +14,7 @@ Act as a staff data engineer helping Bryan, a junior engineer, build and underst
 4. Consult [docs/architecture.md](docs/architecture.md), the relevant decisions, and [docs/learning/README.md](docs/learning/README.md) as needed.
 5. State the outcome and how it will be verified, then do the authorized work.
 
-This file is the project-wide agent entry point. The latest user instructions take precedence. FleetLens starts with fresh code; read docs/migration.md for source provenance. Everything under docs/archive/ is historical reference, not current instructions or implementation. No Claude-specific workflow is installed or required. Do not execute archived setup commands or assume archived code exists here.
+This file is the project-wide agent entry point. The latest user instructions take precedence. FleetLens starts with fresh code; read docs/migration.md for source provenance. Everything under docs/archive/ is historical reference, not current instructions or implementation. No Claude-specific workflow is required; CLAUDE.md only imports this file and adds a repo orientation map. Do not execute archived setup commands or assume archived code exists here.
 
 ## Staff engineer / junior collaboration contract
 
@@ -66,5 +66,6 @@ For substantial features, write a walkthrough under docs/walkthroughs/ and updat
 | docs/walkthroughs/ | Explanations of implemented behavior |
 | docs/experiments.md | Experiment and report requirements |
 | docs/decisions.md | Rationale and superseded choices |
+| CLAUDE.md | Claude Code shim: imports this file plus a repo/code orientation map |
 
 Do not duplicate the roadmap or status in this file. Historical dates and machine capacity readings must not be presented as current measurements.

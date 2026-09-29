@@ -37,6 +37,6 @@ It does not verify that referenced snapshots/configs exist, infer physically rea
 
 ## Engineering evidence and learning
 
-Local Python 3.11.9: 59 test cases pass; Ruff, Black, pip dependency checks, editable installation, wheel build, and isolated wheel import pass. Windows/Linux hosted CI is configured but unverified. Setup commands are in the [README](../../README.md).
+Local Python 3.11.9: 59 test cases pass; Ruff, Black, pip dependency checks, editable installation, wheel build, and isolated wheel import pass. Windows/Linux hosted CI passed on the committed foundation. Setup commands are in the [README](../../README.md).
 
 Walkthrough delivered; Bryan's understanding remains unassessed. Optional teach-back: why could `speed_mps=36` pass validation and still be wrong, and where should the correction happen?
