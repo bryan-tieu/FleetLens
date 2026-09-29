@@ -1,0 +1,20 @@
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server@sha256:5b10577fc3382ee6b26c4916a1d915d90543ade66e85fc29e3a78c4ce08daeb3
+    container_name: fleetlens-clickhouse
+    environment:
+      CLICKHOUSE_DB: fleetlens
+      CLICKHOUSE_USER: fleetlens
+      CLICKHOUSE_PASSWORD: local-development-only
+    ports:
+      - "127.0.0.1:18123:8123"
+    volumes:
+      - fleetlens_clickhouse_data:/var/lib/clickhouse
+    healthcheck:
+      test: ["CMD", "clickhouse-client", "--user", "fleetlens", "--password", "local-development-only", "--query", "SELECT 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+volumes:
+  fleetlens_clickhouse_data:

@@ -6,12 +6,12 @@ Updated scope: 2026-09-28. The [roadmap](roadmap.md) owns milestone sequencing; 
 
 ## Evidence mapping
 
-Most rows remain **planned / unproven**. Row 9 has partial local evidence from the Python foundation and synthetic generator; hosted Windows/Linux CI passes for the earlier foundation commit, while this generator increment has only local macOS verification. Broader automation remains unbuilt. Documentation alone does not close a row.
+Most rows remain **planned / unproven**. Rows 2 and 10 now have partial local evidence from validated synthetic ingestion and ClickHouse storage, but no explorer or source-to-surface demonstration. Row 9 has partial local evidence from the Python foundation and synthetic generator; hosted Windows/Linux CI passes for the earlier foundation commit, while later increments have local macOS verification only. Documentation alone does not close a row.
 
 | Row | Responsibility | Milestone / artifact | Required evidence | Status |
 |---|---|---|---|---|
 | 1 | Manage fleet inflow while preserving diverse data | M3 admission-policy comparison | Equal-byte comparison, yield/coverage, budget accounting, observable features, selection limitations | Planned |
-| 2 | Make fleet data discoverable and queryable | M1 ClickHouse + explorer; M2 assets | Schema rationale, working bounded queries, latency at stated size, visible lineage/quality | Planned |
+| 2 | Make fleet data discoverable and queryable | M1 ClickHouse + explorer; M2 assets | Schema rationale, working bounded queries, latency at stated size, visible lineage/quality | Partial: [local ClickHouse sample storage and guarded logical count](walkthroughs/04-clickhouse-storage.md); bounded queries, latency, and explorer pending |
 | 3 | Define driving-performance metrics that inform decisions | M1 event rate; M2 methodology report | Hand-computed fixture, exposure/gap policy, stratification, uncertainty/completeness, supported interpretation | Planned |
 | 4 | Surface valuable scenarios for training/evaluation | M1 hard-brake discovery; M3 selection; M4 real-image curation | Frozen truth/matching rules, precision/recall, threshold sensitivity, explicit synthetic/real limits | Planned |
 | 5 | Evaluate effectiveness of new datasets | M4 controlled curation experiment | Disjoint evaluation, equal training conditions, per-slice delta and variability, negative results | Planned |
@@ -19,7 +19,7 @@ Most rows remain **planned / unproven**. Row 9 has partial local evidence from t
 | 7 | Build agentic tools for analysis | Optional semantic tool interface | Bounded read-only contracts, provenance, evaluation of success and failure cases | Planned / optional |
 | 8 | Work across data engineering, analytics, and data science | M1–M4 related data products | End-to-end telemetry demo and separate controlled ML experiment; explicit boundary between them | Planned |
 | 9 | Build automation and internal libraries | M0 packaging/tests; M2 automation | Reproducible setup, shared contracts, CI, useful run tooling | Partial: [contracts](walkthroughs/01-python-foundation.md), [synthetic CLI and 64 local passing tests](walkthroughs/02-synthetic-fixture.md), [earlier foundation CI](../.github/workflows/ci.yml) passing on Windows/Linux; M2 automation pending |
-| 10 | Own ingestion through visualization | M1 demo; M2 reliability | Source-to-surface traceability, reproducible run, known exclusions, recovery demonstration | Planned |
+| 10 | Own ingestion through visualization | M1 demo; M2 reliability | Source-to-surface traceability, reproducible run, known exclusions, recovery demonstration | Partial: [JSONL validation](walkthroughs/03-jsonl-ingestion.md) to [local storage](walkthroughs/04-clickhouse-storage.md); metrics, API, and visualization pending |
 | 11 | Monitor and maintain infrastructure health | M2 operations; M3 streaming if added | Run metadata, quality/freshness checks, injected failure, diagnosis and recovery runbook | Planned |
 
 ## Qualifications and learning evidence

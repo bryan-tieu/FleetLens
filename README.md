@@ -2,7 +2,7 @@
 
 A fleet telemetry platform for reliable ingestion, driving-event analysis, and diversity-aware data selection.
 
-**Status: M0 complete locally; M1 ingestion validation started.** The synthetic generator and fixture feed a validating JSONL reader with row quarantine and an accounting report. Local checks pass with 73 tests. Database storage, cross-load replay, metrics, and explorer remain planned.
+**Status: M0 complete locally; M1 ingestion and local storage underway.** The synthetic fixture feeds a validating JSONL reader and a local ClickHouse raw/logical sample model. Repeated and concurrent loads preserve the logical sample count in a live integration test. Event/exposure metrics and the explorer remain planned.
 
 ## Purpose
 
@@ -25,6 +25,10 @@ Later milestones add reliability and orchestration, upload admission under a byt
 - [OpenRig pair](docs/openrig.md): optional local implementer/reviewer workflow and operating commands.
 - [Learning record](docs/learning/README.md): observed understanding, separate from code completion.
 - [Migration record](docs/migration.md): provenance, archive, and transfer boundaries.
+
+## Architecture diagrams
+
+The repository includes the [Archify agent skill](.agents/skills/archify/SKILL.md) for source-backed architecture, workflow, sequence, data-flow, and lifecycle diagrams. Ask your coding agent to use Archify for a diagram; the skill creates a checked, standalone HTML file from typed JSON. Node.js 18 or newer is required. To check the local package, run `node .agents/skills/archify/bin/archify.mjs doctor` from the repository root. The vendored package is upstream v3.0.1; update it deliberately from its [source repository](https://github.com/tt-a1i/archify), rather than changing its files in place.
 
 ## Running the project
 
@@ -65,5 +69,15 @@ Validate the generated snapshot and write a row accounting/quarantine report:
 ```
 
 On macOS/Linux, use `.venv/bin/python`. The installed `fleetlens-validate` entry point accepts the same arguments. The report contains `input_rows`, `accepted_rows`, `rejected_rows`, and the snapshot hash; `quarantine.jsonl` contains line numbers and reasons without raw records. A manifest/hash mismatch rejects the whole snapshot. See the [ingestion walkthrough](docs/walkthroughs/03-jsonl-ingestion.md) for replay limits.
+
+For the local ClickHouse slice, start Docker Desktop and run:
+
+```powershell
+docker compose -f infra/clickhouse/compose.yaml up -d
+.\.venv\Scripts\python.exe -m fleetlens.storage.cli --input runs/tiny
+.\.venv\Scripts\python.exe -m fleetlens.storage.cli --input runs/tiny
+```
+
+On macOS/Linux, substitute `.venv/bin/python`. The installed `fleetlens-load` entry point accepts the same `--input` argument. The command applies versioned SQL migrations and prints input, accepted, quarantined, physical, logical, and conflict counts. Two loads of the 11-row fixture leave **11 logical samples** while the append-only raw table may contain 22 physical rows. This local compose binds HTTP only to `127.0.0.1:18123` and uses a visible development-only credential; do not use it for real or restricted data. Run `docker compose -f infra/clickhouse/compose.yaml down` to stop the service; add `-v` only if you intend to delete its stored data. See the [storage walkthrough](docs/walkthroughs/04-clickhouse-storage.md).
 
 Real data remains outside this repository. Read [data/README.md](data/README.md) before configuring dataset access.

@@ -12,11 +12,11 @@ This records Bryan's demonstrated understanding separately from implementation p
 | Competency | Relevant milestone | Current state | Evidence / next check |
 |---|---|---|---|
 | Python contracts, validation, random streams | M0 | Explained | Foundation and generator walkthroughs delivered; explain why changing fleet size should not change vehicle 7 |
-| Signal units and firmware semantics | M0–M2 | Not assessed | Bryan identified a boundary for unit repair, but placed it downstream of the canonical sample; trace wire value -> adapter -> canonical value next |
+| Signal units and firmware semantics | M0–M2 | Explained | Bryan located conversion while reading but has not independently named the adapter-before-sample boundary; trace 36 km/h -> 10 m/s next |
 | SQL grain, joins, event episodes | M1 | Not assessed | Explain sample counts versus event counts and a duplicating join |
 | Exposure, strata, uncertainty | M1–M2 | Not assessed | Bryan identified that the gap could distort the rate; next compute the valid-distance denominator and direction of the distortion |
-| ClickHouse schema and queries | M1–M2 | Not assessed | Defend ordering against a real query and inspect its plan |
-| Replay, backfill, late data, quarantine | M1–M2 | Explained | Bryan independently diagnosed append-only duplicates; next explain concurrent loads and same-key changed values at the storage boundary |
+| ClickHouse schema and queries | M1–M2 | Explained | Storage walkthrough delivered; trace raw versus logical grain and defend source-key sorting against a drive lookup |
+| Replay, backfill, late data, quarantine | M1–M2 | Explained | Bryan diagnosed row quarantine and a concurrent existence-check race; next trace identical keys and changed payloads through storage |
 | Dagster assets and operational checks | M2 | Not assessed | Trace a failed upstream check to downstream behavior |
 | Admission budgets and selection bias | M3 | Not assessed | Explain how selection changes observed event prevalence |
 | Training/evaluation isolation | M4 | Not assessed | Find leakage in a proposed selection experiment |
