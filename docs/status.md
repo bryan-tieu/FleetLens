@@ -16,7 +16,7 @@ live in their [history](history.md), [decision](decisions.md), and [learning](le
   checks snapshot integrity, quarantines malformed or duplicate rows with
   reasons, and writes a reconciled report. Database storage, cross-load replay,
   event/exposure transforms, frontend, and services remain unimplemented.
-- Bryan's partial teach-back on units and exposure is recorded in the
+- Bryan's teach-backs on units, exposure, and replay are recorded in the
   [2026-09-29 learning evidence](learning/2026-09-29.md).
 - The optional [OpenRig pair](openrig.md) was configured on this Mac. At last
   check both seats were ready and idle. The reviewer inspected this M1 slice;
