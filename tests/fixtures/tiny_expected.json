@@ -1,0 +1,24 @@
+{
+  "fixture_version": "tiny-oracle/v1",
+  "origin": "synthetic",
+  "snapshot_id": "fixture-v1",
+  "rule_note": "Independent hand calculation; not computed by generator or miner. Acceleration at a sample applies until the next sample. A hard-brake episode has acceleration <= -3 m/s^2 for at least 2 contiguous seconds. Exposure uses trapezoidal speed integration only across adjacent samples no more than 1 second apart.",
+  "drives": {
+    "fixture-brake-brake-drive": {
+      "source_sequences": [0, 1, 2, 3, 4, 5],
+      "event_windows_seconds": [[1, 3]],
+      "valid_exposure_seconds": 5,
+      "valid_distance_m": 36
+    },
+    "fixture-gap-gap-drive": {
+      "source_sequences": [0, 1, 2, 3, 4],
+      "event_windows_seconds": [],
+      "excluded_gaps_seconds": [[2, 5]],
+      "valid_exposure_seconds": 3,
+      "valid_distance_m": 30
+    }
+  },
+  "total_event_episodes": 1,
+  "total_valid_exposure_seconds": 8,
+  "total_valid_distance_m": 66
+}

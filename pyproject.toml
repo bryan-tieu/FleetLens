@@ -10,6 +10,9 @@ readme = "README.md"
 requires-python = ">=3.11,<3.12"
 dependencies = []
 
+[project.scripts]
+fleetlens = "fleetlens.cli:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
