@@ -28,6 +28,10 @@ live in their [history](history.md), [decision](decisions.md), and [learning](le
 - The Archify v3.0.1 agent skill is vendored under
   [`.agents/skills/archify`](../.agents/skills/archify/SKILL.md) for diagrams.
   It is developer tooling, not a FleetLens product feature or JD evidence.
+- A [source-backed architecture map](../.archify/architecture-fleetlens-end-to-end-20260929-154317/fleetlens-end-to-end.html)
+  now traces the committed synthetic JSONL, validation, quarantine, and
+  ClickHouse paths, then labels metrics, API, and explorer as planned. See its
+  [walkthrough](walkthroughs/05-architecture-map.md).
 
 ## Verification and limits
 
@@ -76,7 +80,11 @@ live in their [history](history.md), [decision](decisions.md), and [learning](le
   passed `git diff --check` and a local-link scan of 32 active Markdown files.
 - Archify package setup passed `node .agents/skills/archify/bin/archify.mjs doctor`
   on local Node.js 24.21.0; its demo command generated standalone HTML in a
-  temporary directory. No FleetLens diagram has been authored yet.
+  temporary directory. The FleetLens architecture map is pinned to commit
+  `14f4b6d3ee5c968ac5b44b4695c7d6e704ef1b55`; Archify showcase
+  `finalize` passed validation, delivery, strict check, and browser check with
+  no diagnostics. Its visual check passed automated layout/theme checks and
+  the light desktop capture was inspected. Planned components were not run.
 
 ## Local resources
 
@@ -88,8 +96,8 @@ check OpenRig daemon PID 67206 and tmux seats `dev-owner@fleetlens` and
 location; see the [README](../README.md) for ClickHouse stop commands. Do not
 treat these Mac process IDs as the state of another machine.
 
-Unrelated untracked `.agents/` and `.archify/` directories appeared during this
-session and were left untouched; they are excluded from this increment's commit.
+The `.agents/` skill and `.archify/` diagram directories are committed
+separately from the ClickHouse storage commit.
 
 ## Next bounded task
 

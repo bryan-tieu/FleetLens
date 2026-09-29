@@ -21,7 +21,7 @@ This records Bryan's demonstrated understanding separately from implementation p
 | Admission budgets and selection bias | M3 | Not assessed | Explain how selection changes observed event prevalence |
 | Training/evaluation isolation | M4 | Not assessed | Find leakage in a proposed selection experiment |
 | API/UI traceability and bounded queries | M1–M5 | Not assessed | Trace a chart value to its source records |
-| Architecture and interview ownership | Throughout | Not assessed | Explain one choice, its alternative, and its limitation |
+| Architecture and interview ownership | Throughout | Explained | [Source-to-explorer map](../walkthroughs/05-architecture-map.md) delivered; explain one boundary, its alternative, and its limitation |
 
 No assessment has been completed during the documentation migration.
 
