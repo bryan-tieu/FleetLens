@@ -1,0 +1,12 @@
+# FleetLens history
+
+## 2026-09-28 — migrate context with fresh code and independent history
+
+- Preserved the destination's README-only initial commit f733f84; imported no FleetLoop Git ancestry.
+- Transferred the revised AI-assisted engineering/learning guidance and job-aligned roadmap.
+- Reset implementation status and the first session plan to reflect a documentation-only repository.
+- Archived source documentation with provenance and hashes, including the pre-existing learning-note edits, while leaving FleetLoop untouched.
+- Did not copy source modules, datasets, junctions, caches, virtual environments, dependency pins, or Claude-specific workflows.
+- No engineering performance result or learning assessment is claimed.
+- See migration.md for transfer and verification details.
+- Migration verification passed: 49 Markdown files with resolving local links, 26 matching archive hashes, unchanged posting/source files, and no transferred implementation or source Git ancestry.

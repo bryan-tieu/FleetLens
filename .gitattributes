@@ -1,0 +1,39 @@
+# Line endings — this repo is authored on Windows (primary) and macOS (secondary).
+# Normalize everything to LF in the repository; Windows checkouts get native endings.
+# See docs/environments.md.
+* text=auto
+
+# Anything a Linux container or CI runner executes must be LF on disk regardless of host.
+*.sh            text eol=lf
+*.sql           text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+*.proto         text eol=lf
+Dockerfile      text eol=lf
+*.dockerfile    text eol=lf
+.gitattributes  text eol=lf
+.gitignore      text eol=lf
+
+# Windows-native scripts must keep CRLF or PowerShell/cmd will complain.
+*.ps1           text eol=crlf
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+
+# Binary — never normalize, never diff.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
+*.tgz  binary
+*.mp4  binary
+*.parquet binary
+*.pt   binary
+*.pth  binary
+*.onnx binary
+*.bin  binary
+
+# Keep documentation consistent across development hosts.
+*.md text eol=lf

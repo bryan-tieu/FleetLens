@@ -1,0 +1,219 @@
+{
+  "source_root": "C:\\Users\\Bryan\\Downloads\\FleetLoop\\FleetLoop",
+  "source_commit": "9ed0e58aa53a7268bd4307955dc6815bfe1cbf40",
+  "destination_initial_commit": "f733f8429fa6e8f3af0d885f042b2de861c8a688",
+  "source_status_at_capture": " M docs/daily/day-01.md\n M docs/glossary.md\n M fleetgen/signals.py\n M requirements.txt\n?? fleetgen/fleet.py\n",
+  "source_file_hashes": {
+    ".claude/README.md": "0c0a7c1ca2bca8ed0dbd3e0c46a5c44705bc4a4c6ec3ae32129d0a8aee14bfc7",
+    ".claude/skills/end-session/SKILL.md": "205f7d2353f3c7617538f8d8f9458e37c5d63d3f06ef273d1ce427ed84adb0c5",
+    ".claude/skills/jd-check/SKILL.md": "4d9b3ec6119ae09540543a010dded68defc884329c27e7c88c64e1db2eef5a4b",
+    ".claude/skills/measure/SKILL.md": "0f515fca34117bc7bf964f6bad782407a1d5a5fc1c720a610672d7df0142f2e8",
+    ".claude/skills/metric-review/SKILL.md": "a9a923daeb5268a397fcceb31346a71f8a8c4e4374ae1a637dae7f5b372ab7a5",
+    ".claude/skills/plan-day/SKILL.md": "8289bb422f7887e9461231b5b7e46913a658d47765b7fcfc51eeb7487852d3d8",
+    ".claude/skills/quiz/SKILL.md": "2d7e3faf4f95a768a652850141ec0c29e384fc904387da631b0eecc69017fed8",
+    ".claude/skills/session-analysis/SKILL.md": "1b7fcf4d106d663a11bdf13dbbe7a6ec2bf6a7be2f0c9805bc3a11f2caac4993",
+    ".claude/skills/start-session/SKILL.md": "d72734585f124a52640335a3c6c9636ebc5977619c4270fab27b4b3ce6ec4691",
+    ".claude/skills/teach/SKILL.md": "3b92d3660c114af9198adc642d035c616d4b0bcf0bd47d02eb7965683b025c25",
+    ".claude/skills/verify-pipeline/SKILL.md": "290fa7723bdacb9f6a0f637a9377eed15066640dacd0caf924157e92c725e834",
+    ".gitattributes": "cdec14cfcb1774d69840da0f6adc741fb62c48e211d206821bd731ac5f486422",
+    ".gitignore": "ad05c8ff91f9cbf92da3c9cb119420504eb3410d0b14913a24f86fa60fd31ed2",
+    "AGENTS.md": "e12d147aa5b2b31b9554fad7b34b0430f9c8656e7874edb5a556022e17b507ab",
+    "CLAUDE.md": "81072219f80a8b615283dde23d6a3d981d49db62cec8fb9440b2f955312b73b0",
+    "README.md": "df8abfe98c202bae6671205abeb2076f29db93ffaca570177e8aed7f697f45f0",
+    "data/README.md": "9480f78e6ef167d8dc51c5b3d623f64361524e5c00102db0eb9928e68735f270",
+    "docs/FleetLoop_Blueprint.md": "5a193df28ee7d92caa38b5edcdb36d6da672e2ee2cade51db52aa22932349d23",
+    "docs/architecture.md": "f943caef70aeb13b035b84a1a7e0328e3027acdef7ed3ceb4fafe995ff0a3ae7",
+    "docs/daily/README.md": "c28c7c2c8bc831f5b62b07d601ee4627dfc98007e19ce80e3fe3746429c1bcd9",
+    "docs/daily/day-01.md": "c161db73c258458ee65be7d17e6cb710fc6ec73729795d4f437b65a23203bb31",
+    "docs/daily/session-02.md": "06817ea49e64555d16fe6c94c88fd6114a89a6a8dd1407655444e9cf9ba7cb24",
+    "docs/data-acquisition.md": "7b7c87e5b94f348215f60537634b5b717acd4470ab9f47900a26d38bccbc6078",
+    "docs/decisions.md": "d98c5f03effa9cb6d8385c3f00f17f230f08fc7d795d4a077e79089bdb52b903",
+    "docs/environments.md": "1c31219d0aeadcc0f696388209787030a893bd64c8cd7289b90747e5d21a33de",
+    "docs/experiments.md": "d7039f24e322ced0fd46eb9f5d4fafd4194d848c410197ab74811ec3714ed016",
+    "docs/glossary.md": "9d7f119578aeb53d8abd329b4a32afafd07fead6a5497f5e78e7cd824e67fc53",
+    "docs/history.md": "64bc8cc6dbb19d371bc33dfe84d08490591cc1bdc68b214313eaac8dcfa217e5",
+    "docs/interview/README.md": "9d4f4ac1b53bf3aaa52d58ea89a6a496364d60d3d780dd0937a9c3ee4fbfc221",
+    "docs/jd-map.md": "cf730f784bf2cb38232d0b4ab5121f3746248e14dd94f8cea4f2d695bd3f61d7",
+    "docs/learning/README.md": "78732c83d20f9aa8741f663378446498c9ad760f9a5fd94d411cd0c8e81e4c4b",
+    "docs/metrics/README.md": "03b0d463a2b534ac7564b1e02f72add249ebd70b8aecbf026aea843ad63192d1",
+    "docs/operating-manual.md": "6e5571a2f0240db7b0536ab9083e9fcbfdfc3b9484ace8f84ae84bd1e55d86ae",
+    "docs/privacy.md": "6d1ed4b454939ad264dcbca10ed87313dc7b08a8c97e097881207e69c56808e6",
+    "docs/roadmap.md": "4f34808464b8149a60c6b637ce0a8bd5f136c620e6828957150a9ecc777ae8c4",
+    "docs/status.md": "a3d9e67e70fbcbf2babe9214d3c061cedf257e652dab46a2ef7b33dfcf83805f",
+    "docs/tradeoffs.md": "e9b7eee3a23092a49cfd8c801530732aca4cd0b727ddb1ca2d4cf24318f0a57a",
+    "docs/walkthroughs/README.md": "3ba34c0cf3f7972e07ced3dd03023150fd134da2bdb20699a00790b4755d25a7",
+    "docs/walkthroughs/current-contracts.md": "4522adc84d8091fed08b2f53c36676a35b1b7638df7bbe0ff4ac2365552e231a",
+    "explorer/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fleetgen/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fleetgen/fleet.py": "20ef3e02fbbd84386cfac896a22c908c313ed43b653bcb3b848c5b64002f85c3",
+    "fleetgen/signals.py": "e3d3bf22bff1b7bf2864bb42668ef7a857559dd522fc4040f14873ba836d0432",
+    "fleetkit/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ingest/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metrics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "migrations/clickhouse/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "migrations/postgres/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pyproject.toml": "d136612098ea7ed89a32f4b8462b29bea127b8d7e4bbfd0faf429a417af8c521",
+    "requirements-dev.txt": "8beb9cb4a350fdf923a4afd0c1e7c4f65c01d7177c0a82f443a41f384b49c05d",
+    "requirements.txt": "e4a481742c74b3c63938644d1558f8a7164695a1f78db3dd4be995551f65db86",
+    "tests/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "documents": [
+    {
+      "source": "AGENTS.md",
+      "archive": "docs/archive/fleetloop/AGENTS.reference.md",
+      "source_sha256": "e12d147aa5b2b31b9554fad7b34b0430f9c8656e7874edb5a556022e17b507ab",
+      "archive_sha256": "31f02fb76f45f66e15e05fc4bdc4f9998fcf24ede72b43b4a35c68847deb66ba"
+    },
+    {
+      "source": "CLAUDE.md",
+      "archive": "docs/archive/fleetloop/CLAUDE.reference.md",
+      "source_sha256": "81072219f80a8b615283dde23d6a3d981d49db62cec8fb9440b2f955312b73b0",
+      "archive_sha256": "fbaa8426f3b2ce8241b6462eb0a04c3f05869cd5d913d4800b3038d47b0662e2"
+    },
+    {
+      "source": "README.md",
+      "archive": "docs/archive/fleetloop/README.md",
+      "source_sha256": "df8abfe98c202bae6671205abeb2076f29db93ffaca570177e8aed7f697f45f0",
+      "archive_sha256": "8bb94fe1716cb779389819bbdb4b364e2e3274132a289d83d6c76f1c9e3d318a"
+    },
+    {
+      "source": "data/README.md",
+      "archive": "docs/archive/fleetloop/data/README.md",
+      "source_sha256": "9480f78e6ef167d8dc51c5b3d623f64361524e5c00102db0eb9928e68735f270",
+      "archive_sha256": "cdaf9d28c4708d6ba845c5e6723cf4ca975bd9285d06fb95e057e35482d9e7f7"
+    },
+    {
+      "source": "docs/FleetLoop_Blueprint.md",
+      "archive": "docs/archive/fleetloop/docs/FleetLoop_Blueprint.md",
+      "source_sha256": "5a193df28ee7d92caa38b5edcdb36d6da672e2ee2cade51db52aa22932349d23",
+      "archive_sha256": "d479bd18a9eacc1bb31012541c55e911afb1d8c4bb92c620d769a7ce9fdc66b8"
+    },
+    {
+      "source": "docs/architecture.md",
+      "archive": "docs/archive/fleetloop/docs/architecture.md",
+      "source_sha256": "f943caef70aeb13b035b84a1a7e0328e3027acdef7ed3ceb4fafe995ff0a3ae7",
+      "archive_sha256": "cdaf51a2949222ad354d6fee6c983b0dc9a4efe1c3d2b35e391ee33e6db659f9"
+    },
+    {
+      "source": "docs/daily/README.md",
+      "archive": "docs/archive/fleetloop/docs/daily/README.md",
+      "source_sha256": "c28c7c2c8bc831f5b62b07d601ee4627dfc98007e19ce80e3fe3746429c1bcd9",
+      "archive_sha256": "36d655a47117d88b6c73a4f8e3be6a5fb5c4093f3dbcd6711adf667e2119b3c0"
+    },
+    {
+      "source": "docs/daily/day-01.md",
+      "archive": "docs/archive/fleetloop/docs/daily/day-01.md",
+      "source_sha256": "c161db73c258458ee65be7d17e6cb710fc6ec73729795d4f437b65a23203bb31",
+      "archive_sha256": "2f605a2643943472ce6db67519bab41a6471606aeee2608efcdb0670066a1e62"
+    },
+    {
+      "source": "docs/daily/session-02.md",
+      "archive": "docs/archive/fleetloop/docs/daily/session-02.md",
+      "source_sha256": "06817ea49e64555d16fe6c94c88fd6114a89a6a8dd1407655444e9cf9ba7cb24",
+      "archive_sha256": "07b0922da8ff4a6aa62c6e015b1934f3c3e18ef6797516f76754710ba3523535"
+    },
+    {
+      "source": "docs/data-acquisition.md",
+      "archive": "docs/archive/fleetloop/docs/data-acquisition.md",
+      "source_sha256": "7b7c87e5b94f348215f60537634b5b717acd4470ab9f47900a26d38bccbc6078",
+      "archive_sha256": "abbf7fd13236d8ea1f4f9bf7d64863cabe312a4a854a93b35fdf4b5b0c45cc03"
+    },
+    {
+      "source": "docs/decisions.md",
+      "archive": "docs/archive/fleetloop/docs/decisions.md",
+      "source_sha256": "d98c5f03effa9cb6d8385c3f00f17f230f08fc7d795d4a077e79089bdb52b903",
+      "archive_sha256": "df03f55ba3ddff265d937e17768ecf57a81c763b841efc2270fb391bcdc07912"
+    },
+    {
+      "source": "docs/environments.md",
+      "archive": "docs/archive/fleetloop/docs/environments.md",
+      "source_sha256": "1c31219d0aeadcc0f696388209787030a893bd64c8cd7289b90747e5d21a33de",
+      "archive_sha256": "c0d7b1ba57e3df07d14f54effcf6e7f37b6b41eb3b9b09bfeeaeb407b1542548"
+    },
+    {
+      "source": "docs/experiments.md",
+      "archive": "docs/archive/fleetloop/docs/experiments.md",
+      "source_sha256": "d7039f24e322ced0fd46eb9f5d4fafd4194d848c410197ab74811ec3714ed016",
+      "archive_sha256": "74311d945db29f10f9d2a458ff7db76d4c14e989b28a93bcbf7cd1ce39f49d00"
+    },
+    {
+      "source": "docs/glossary.md",
+      "archive": "docs/archive/fleetloop/docs/glossary.md",
+      "source_sha256": "9d7f119578aeb53d8abd329b4a32afafd07fead6a5497f5e78e7cd824e67fc53",
+      "archive_sha256": "9d7e66205f622117d7b62849ebffa3cd786dea3b8f1205706535c304f86751e2"
+    },
+    {
+      "source": "docs/history.md",
+      "archive": "docs/archive/fleetloop/docs/history.md",
+      "source_sha256": "64bc8cc6dbb19d371bc33dfe84d08490591cc1bdc68b214313eaac8dcfa217e5",
+      "archive_sha256": "6a3aebd3a6327295a0fd3a2572bf146c1504468c7fcd1527a221c126d30004e5"
+    },
+    {
+      "source": "docs/interview/README.md",
+      "archive": "docs/archive/fleetloop/docs/interview/README.md",
+      "source_sha256": "9d4f4ac1b53bf3aaa52d58ea89a6a496364d60d3d780dd0937a9c3ee4fbfc221",
+      "archive_sha256": "ef2c3870d968f92dafb4eff439252f989678d572b531fcd533714693a441acbe"
+    },
+    {
+      "source": "docs/jd-map.md",
+      "archive": "docs/archive/fleetloop/docs/jd-map.md",
+      "source_sha256": "cf730f784bf2cb38232d0b4ab5121f3746248e14dd94f8cea4f2d695bd3f61d7",
+      "archive_sha256": "0525768bc2cedb32f48d3ffb7ebc9fae89b61d80add930e15c9051079e31cbf1"
+    },
+    {
+      "source": "docs/learning/README.md",
+      "archive": "docs/archive/fleetloop/docs/learning/README.md",
+      "source_sha256": "78732c83d20f9aa8741f663378446498c9ad760f9a5fd94d411cd0c8e81e4c4b",
+      "archive_sha256": "71b7e043dda2f44112c8f35d5adbc5c0856ee282824bfd87766cc373ed7fff07"
+    },
+    {
+      "source": "docs/metrics/README.md",
+      "archive": "docs/archive/fleetloop/docs/metrics/README.md",
+      "source_sha256": "03b0d463a2b534ac7564b1e02f72add249ebd70b8aecbf026aea843ad63192d1",
+      "archive_sha256": "fd63d36d1a4f2e90bd701400224da302383937c333818bd6013ef4b3e57e3514"
+    },
+    {
+      "source": "docs/operating-manual.md",
+      "archive": "docs/archive/fleetloop/docs/operating-manual.md",
+      "source_sha256": "6e5571a2f0240db7b0536ab9083e9fcbfdfc3b9484ace8f84ae84bd1e55d86ae",
+      "archive_sha256": "aa20aca859d64d25860da53e56c15c351702eafc63a230a8ff69566d7ed5f8b4"
+    },
+    {
+      "source": "docs/privacy.md",
+      "archive": "docs/archive/fleetloop/docs/privacy.md",
+      "source_sha256": "6d1ed4b454939ad264dcbca10ed87313dc7b08a8c97e097881207e69c56808e6",
+      "archive_sha256": "febe2095bc33760bee293b8b496bb03b942789820775df1549daaf57d039efb0"
+    },
+    {
+      "source": "docs/roadmap.md",
+      "archive": "docs/archive/fleetloop/docs/roadmap.md",
+      "source_sha256": "4f34808464b8149a60c6b637ce0a8bd5f136c620e6828957150a9ecc777ae8c4",
+      "archive_sha256": "8cb0ad17509a459ce07d09aa677b3ec46951a9d597772c6b13b4ea1a9bf0347d"
+    },
+    {
+      "source": "docs/status.md",
+      "archive": "docs/archive/fleetloop/docs/status.md",
+      "source_sha256": "a3d9e67e70fbcbf2babe9214d3c061cedf257e652dab46a2ef7b33dfcf83805f",
+      "archive_sha256": "24377f3c15448b56493d4403f40df66d19e4d0fbc9c574a610940917fc0f2e27"
+    },
+    {
+      "source": "docs/tradeoffs.md",
+      "archive": "docs/archive/fleetloop/docs/tradeoffs.md",
+      "source_sha256": "e9b7eee3a23092a49cfd8c801530732aca4cd0b727ddb1ca2d4cf24318f0a57a",
+      "archive_sha256": "0952516117ab1a9c9a8754662cda4015b0e2e0016bf8658781cd43579b4e62c1"
+    },
+    {
+      "source": "docs/walkthroughs/README.md",
+      "archive": "docs/archive/fleetloop/docs/walkthroughs/README.md",
+      "source_sha256": "3ba34c0cf3f7972e07ced3dd03023150fd134da2bdb20699a00790b4755d25a7",
+      "archive_sha256": "a3d5bcbf9b529e962dffeb9bbddebf0bcea30f3f6440d11950b366abf09e43b6"
+    },
+    {
+      "source": "docs/walkthroughs/current-contracts.md",
+      "archive": "docs/archive/fleetloop/docs/walkthroughs/current-contracts.md",
+      "source_sha256": "4522adc84d8091fed08b2f53c36676a35b1b7638df7bbe0ff4ac2365552e231a",
+      "archive_sha256": "f6dbac89b2f05fc998627e651e2d46cb4c9306a5b8082fd716c3e29b26677214"
+    }
+  ],
+  "note": "Source files are not modified. Source hashes include existing uncommitted work; archive text adds a notice and relocates links."
+}

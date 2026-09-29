@@ -1,0 +1,52 @@
+# ── Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# ── Node / frontend (explorer)
+node_modules/
+explorer/dist/
+explorer/.vite/
+
+# ── Data: datasets, bronze, model artifacts — never in git (comma2k19/BDD100K are huge)
+data/*
+!data/README.md
+runs/
+weights/
+
+# ── Secrets & env (never commit credentials)
+.env
+.env.*
+*.key
+*.pem
+service-account*.json
+
+# ── Terraform (only if cloud deployment is introduced)
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+!*.tfvars.example
+
+# ── Dagster
+.dagster/
+dagster_home/
+
+# ── Claude Code user-local settings
+.claude/settings.local.json
+
+# ── OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ── Logs
+*.log
