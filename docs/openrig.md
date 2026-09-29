@@ -122,8 +122,12 @@ the project instructions. The owner delivered a setup message to the reviewer.
 The reviewer's direct ACK met an owner permission prompt, so it successfully
 used the owner's mailbox instead (`inbox-20260929175138-33734288`). Both seats
 then became idle with no assigned project work. That informational ACK remains
-in the mailbox. A complete implementation-to-review queue cycle and reboot
-recovery are separate, unverified behaviors.
+in the mailbox. Later on 2026-09-29, the reviewer inspected the uncommitted
+M1 ingestion increment. It found unsupported wire-version acceptance and raw
+value leakage in rejection reasons; the main coding session fixed both. The
+reviewer rechecked the candidate and found no remaining issue. The separate
+owner seat made no product edits. A complete queue-driven implementation and
+review cycle, and reboot recovery, remain unverified.
 
 References: [OpenRig getting started](https://github.com/mvschwarz/openrig/blob/main/docs/reference/getting-started.md)
 and [Codex CLI](https://learn.chatgpt.com/docs/codex/cli). Installed behavior is

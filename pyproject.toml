@@ -12,6 +12,7 @@ dependencies = []
 
 [project.scripts]
 fleetlens = "fleetlens.cli:main"
+fleetlens-validate = "fleetlens.ingestion.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

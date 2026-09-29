@@ -2,7 +2,7 @@
 
 A fleet telemetry platform for reliable ingestion, driving-event analysis, and diversity-aware data selection.
 
-**Status: M0 synthetic generator and fixture implemented locally.** Installable package, canonical telemetry contracts, stable vehicle assignment, a reproducible CLI, and 64 passing tests. The previous foundation passed Windows/Linux CI; the new generator has been checked locally on macOS. Ingestion, database, and explorer remain planned.
+**Status: M0 complete locally; M1 ingestion validation started.** The synthetic generator and fixture feed a validating JSONL reader with row quarantine and an accounting report. Local checks pass with 73 tests. Database storage, cross-load replay, metrics, and explorer remain planned.
 
 ## Purpose
 
@@ -57,5 +57,13 @@ Generate invented samples from the repository root after installing the package:
 On macOS/Linux, use `.venv/bin/python` in place of `.\.venv\Scripts\python.exe`. The installed `fleetlens` entry point accepts the same arguments.
 
 Each command writes `samples.jsonl` and `manifest.json` with a content hash, source/normalization versions, and generation parameters. Repeating a command in the same environment yields identical files. The [fixed fixture oracle](tests/fixtures/tiny_expected.json) records hand-calculated event windows and exposure for future M1 checks; no miner or metric computation exists yet. See the [generator walkthrough](docs/walkthroughs/02-synthetic-fixture.md).
+
+Validate the generated snapshot and write a row accounting/quarantine report:
+
+```powershell
+.\.venv\Scripts\python.exe -m fleetlens.ingestion.cli --input runs/tiny --output runs/tiny-validation
+```
+
+On macOS/Linux, use `.venv/bin/python`. The installed `fleetlens-validate` entry point accepts the same arguments. The report contains `input_rows`, `accepted_rows`, `rejected_rows`, and the snapshot hash; `quarantine.jsonl` contains line numbers and reasons without raw records. A manifest/hash mismatch rejects the whole snapshot. See the [ingestion walkthrough](docs/walkthroughs/03-jsonl-ingestion.md) for replay limits.
 
 Real data remains outside this repository. Read [data/README.md](data/README.md) before configuring dataset access.
