@@ -39,3 +39,11 @@ Keep this concise. Detailed Q&A belongs in ../interview/; feature explanations b
 ## Review rhythm
 
 After a feature: one short explanation or diagnostic task. At a milestone: trace the full data path and investigate one failure. Before an interview: revisit weak areas and practice a bounded Python/SQL change without generated scaffolding if Bryan wants that practice. Do not quiz after every trivial edit.
+
+## 2026-09-29 — foundation walkthrough delivered
+
+- Artifact: [Python foundation walkthrough](../walkthroughs/01-python-foundation.md), current working tree.
+- AI implemented the environment and contracts and traced one canonical sample with its source key and units.
+- Contract/validation and canonical-unit separation explanations delivered. Combined M0 competency remains not assessed: random streams have not been implemented or explained.
+- Bryan has not supplied a teach-back answer or debugging result. No demonstrated/independent assessment is claimed.
+- Next optional check: explain why speed_mps=36 could be valid structurally but wrong semantically, and identify the correct conversion boundary.

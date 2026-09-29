@@ -6,7 +6,7 @@ Updated scope: 2026-09-28. The [roadmap](roadmap.md) owns milestone sequencing; 
 
 ## Evidence mapping
 
-All rows are currently **planned / unproven**. Documentation and an unfinished module do not close a row. Replace status only with links to implemented artifacts and relevant verification/results.
+Most rows remain **planned / unproven**. Row 9 now has partial local evidence from the Python foundation; hosted CI and broader automation remain unverified. Documentation alone does not close a row.
 
 | Row | Responsibility | Milestone / artifact | Required evidence | Status |
 |---|---|---|---|---|
@@ -18,7 +18,7 @@ All rows are currently **planned / unproven**. Documentation and an unfinished m
 | 6 | Deliver interactive visualizations and useful tooling | M1 explorer; M5 polish | Inspectable event with source trace, bounded payloads, usability walkthrough, measured interaction latency | Planned |
 | 7 | Build agentic tools for analysis | Optional semantic tool interface | Bounded read-only contracts, provenance, evaluation of success and failure cases | Planned / optional |
 | 8 | Work across data engineering, analytics, and data science | M1–M4 related data products | End-to-end telemetry demo and separate controlled ML experiment; explicit boundary between them | Planned |
-| 9 | Build automation and internal libraries | M0 packaging/tests; M2 automation | Reproducible setup, shared contracts, CI, useful run tooling | Planned |
+| 9 | Build automation and internal libraries | M0 packaging/tests; M2 automation | Reproducible setup, shared contracts, CI, useful run tooling | Partial: [contracts and 59 passing cases](walkthroughs/01-python-foundation.md), [CI configured](../.github/workflows/ci.yml); hosted CI/M2 pending |
 | 10 | Own ingestion through visualization | M1 demo; M2 reliability | Source-to-surface traceability, reproducible run, known exclusions, recovery demonstration | Planned |
 | 11 | Monitor and maintain infrastructure health | M2 operations; M3 streaming if added | Run metadata, quality/freshness checks, injected failure, diagnosis and recovery runbook | Planned |
 

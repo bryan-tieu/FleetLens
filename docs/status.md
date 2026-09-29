@@ -1,32 +1,45 @@
 # Current status
 
-Updated 2026-09-28. Repository: FleetLens. This is the single session handoff.
+Updated 2026-09-29. Repository: FleetLens. This is the single session handoff.
 
 ## Current state
 
-- Documentation-only foundation with fresh application code planned.
-- AGENTS.md defines AI-assisted implementation, explanations, review, and learning assessments.
-- No Python modules, packaging metadata, dependency files, tests, database, CLI, frontend, or CI have been copied or implemented.
-- The roadmap and JD map are plans; no engineering result has been measured.
-- All learning competencies remain not assessed. Reading documentation is not proof of understanding.
-- The folder already had an independent README-only initial commit, f733f84; it is preserved. FleetLoop Git ancestry is not imported.
-
-## Next bounded task
-
-Follow [daily/session-01.md](daily/session-01.md): create the smallest installable Python foundation, explicit signal/sample contracts, and meaningful validation tests. Use src/fleetlens/ from the start. Explain a concrete example and the separation between canonical meaning and source encoding.
-
-Next, add stable per-vehicle randomness, a tiny synthetic drive fixture, independently specified event/exposure expectations, and a CLI. Do not launch the full proposed stack or download datasets first.
-
-## Source reference
-
-[Migration record](migration.md) identifies the original repo and documentation commit. Its unfinished Python modules and uncommitted code changes remain there, untouched. They are not dependencies of FleetLens. Archived walkthroughs describe FleetLoop code, not existing FleetLens behavior.
-
-Dataset download and hardware records are historical. No dataset paths, GPU availability, free disk, dependency compatibility, or runtime behavior have been verified here. Use a configurable data root later; do not recreate old junctions automatically.
+- Initial M0 increment implemented: installable `src/fleetlens/` package and immutable, validated signal/sample/provenance contracts.
+- Python 3.11 is the initial supported minor version; local interpreter verified as 3.11.9 on Windows.
+- Runtime has no third-party dependencies. Development/build dependencies are fully version-pinned in requirements-dev.txt; pins are not artifact hashes.
+- 59 validation cases pass. GitHub Actions workflow covers Windows/Linux installation, tests, Ruff, Black, dependency consistency, and wheel build. Hosted execution is not verified.
+- No generator, application CLI, ingestion/quarantine, database, event/exposure calculations, frontend, or services exist yet. M0 remains incomplete.
+- Source identity is defined; storage replay/deduplication is not implemented.
+- Walkthrough delivered in [walkthroughs/01-python-foundation.md](walkthroughs/01-python-foundation.md). Learning assessment remains pending; no answers from Bryan recorded.
 
 ## Verification
 
-Migration checks must establish resolving local documentation links, preserved job-posting text, no copied source code/data/Git ancestry, and an unchanged source working tree. Runtime tests are not applicable until implementation exists. The migration record holds the completed check results.
+Executed locally with `.venv/Scripts/python.exe`:
 
-## Resume in a new session
+- `-m pip install -r requirements-dev.txt`: successful in a newly created environment.
+- `-m pip install --no-build-isolation --no-deps -e .`: successful.
+- `-m pytest`: 59 passed.
+- `-m ruff check .`: all checks passed.
+- `-m black --check src tests`: four files unchanged after formatting.
+- `-m pip check`: no broken requirements.
+- `-m pip wheel --no-build-isolation --no-deps . --wheel-dir dist`: successful.
+- Wheel installed offline with `--no-index --no-deps` into a second fresh environment at runs/package-check. Its interpreter with `-I` imported version 0.1.0 from site-packages, including public contract exports.
+- First smoke-test one-liner failed because PowerShell stripped embedded quotes; rerunning the same assertions through literal stdin passed. No package failure was found.
 
-Open C:\Users\Bryan\Downloads\FleetLens and ask: "Read AGENTS.md and docs/status.md, then implement the first foundation task and explain the important decisions as you go."
+Pre-commit verification on 2026-09-29: `-B -m pytest -p no:cacheprovider` (59 passed), `-m ruff check --no-cache .`, `-m black --check src tests`, `-m pip check`, and `git diff --check` all passed. Bryan authorized committing and pushing this foundation to origin/main.
+
+No real dataset was read. No throughput, fleet behavior, or cloud performance was measured. Hosted CI and Linux checks remain unavailable locally.
+
+## Local resources
+
+Ignored .venv, dist/build packaging artifacts, and runs/package-check remain for development and inspection. No background services or containers were started.
+
+## Next bounded task
+
+Complete the next M0 increment: stable per-vehicle random assignment, a tiny synthetic drive fixture, independent event-window/exposure expectations, and a reproducible CLI. Test stability across fleet-size and ordering changes; keep evaluation truth separate from selection inputs.
+
+Then introduce local ClickHouse for M1's validated loading and query requirements.
+
+## Source reference
+
+[Migration record](migration.md) documents the independent initial commit f733f84 and preserved FleetLoop context. No source code or Git ancestry was copied from FleetLoop. Archived behavior and hardware/dataset observations remain historical.
