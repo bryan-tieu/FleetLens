@@ -1,0 +1,15 @@
+# Complete pinned development environment for Python 3.11.
+# Reviewed baseline, not a claim that these are the newest releases.
+black==25.1.0
+click==8.2.1
+colorama==0.4.6
+iniconfig==2.1.0
+mypy_extensions==1.1.0
+packaging==25.0
+pathspec==0.12.1
+platformdirs==4.3.8
+pluggy==1.6.0
+pytest==8.3.5
+ruff==0.11.13
+setuptools==80.9.0
+wheel==0.45.1
