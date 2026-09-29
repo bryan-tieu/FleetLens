@@ -27,7 +27,7 @@ No assessment has been completed during the documentation migration.
 
 ## Record evidence by day
 
-Add actual learning interactions to [the daily files](../daily/README.md). For each interaction record:
+Add actual learning interactions to `YYYY-MM-DD.md` in this folder. For each interaction record:
 - Date, feature/commit or working-tree snapshot, question/task.
 - Bryan's answer (quote only words he actually supplied), assistance level.
 - What was correct, what needs correction, and a concise explanation.
@@ -40,4 +40,4 @@ Keep this concise. Detailed Q&A belongs in ../interview/; feature explanations b
 
 After a feature: one short explanation or diagnostic task. At a milestone: trace the full data path and investigate one failure. Before an interview: revisit weak areas and practice a bounded Python/SQL change without generated scaffolding if Bryan wants that practice. Do not quiz after every trivial edit.
 
-Dated evidence: [2026-09-29](../daily/2026-09-29.md#learning-evidence).
+Dated evidence: [2026-09-29](2026-09-29.md).

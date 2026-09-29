@@ -1,7 +1,7 @@
 # Current status
 
 Updated 2026-09-29. This is the current working handoff; dated work and evidence
-live in the [daily record](daily/README.md).
+live in their [history](history.md), [decision](decisions.md), and [learning](learning/README.md) folders.
 
 ## Current state
 
@@ -16,7 +16,7 @@ live in the [daily record](daily/README.md).
   services exist. Source identity is defined; storage replay and deduplication
   remain unimplemented.
 - Bryan's partial teach-back on units and exposure is recorded in the
-  [2026-09-29 learning evidence](daily/2026-09-29.md#learning-evidence).
+  [2026-09-29 learning evidence](learning/2026-09-29.md).
 - The optional [OpenRig pair](openrig.md) was configured on this Mac. At last
   check both seats were ready and idle; no M1 task was assigned.
 
@@ -34,10 +34,11 @@ live in the [daily record](daily/README.md).
 - OpenRig 0.6.1 doctor reported healthy with one pod/two seats. Startup and
   message/mailbox delivery were exercised with one-time approvals; a full
   implementation-to-review queue cycle and reboot recovery remain unverified.
-- This session moved 6 history, 5 decision, and 5 learning entries into one
-  dated file per day, together with the completed first session plan. Content
-  preservation, active Markdown link targets, and diff whitespace were checked;
-  results are in the [dated entry](daily/2026-09-29.md#partition-daily-entries-by-date).
+- Dated entries are partitioned by topic and day: history, decisions, learning,
+  and session plans each have their own folder. The [dated history](history/2026-09-29.md)
+  records the documentation checks: all six prior topic/date sections were
+  preserved, links in 31 active Markdown files resolved, and `git diff --check`
+  passed. No code checks were needed for this documentation change.
 
 ## Local resources
 

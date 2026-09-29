@@ -18,7 +18,7 @@ Later milestones add reliability and orchestration, upload admission under a byt
 
 - [AGENTS.md](AGENTS.md): persistent instructions for coding sessions ([CLAUDE.md](CLAUDE.md) imports it for Claude Code).
 - [Current status](docs/status.md): what exists and the next task.
-- [Daily record](docs/daily/README.md): dated work, decisions, learning evidence, and the first implementation plan.
+- Dated records: [history](docs/history.md), [decisions](docs/decisions.md), [learning evidence](docs/learning/README.md), and [session plans](docs/sessions/README.md).
 - [Roadmap](docs/roadmap.md): job-aligned milestones and acceptance criteria.
 - [Architecture](docs/architecture.md): staged design and data contracts.
 - [Operating manual](docs/operating-manual.md): how AI implementation and learning work together.

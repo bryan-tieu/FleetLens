@@ -48,7 +48,7 @@ This file is the project-wide agent entry point. The latest user instructions ta
 
 ## Session finish and persistent context
 
-Update docs/status.md with what changed, exact checks and results, unresolved issues, and one concrete next step. Add meaningful history and consequential decisions to the date's `docs/daily/YYYY-MM-DD.md`; keep docs/history.md and docs/decisions.md as indexes. Update JD evidence only when an artifact supports it.
+Update docs/status.md with what changed, exact checks and results, unresolved issues, and one concrete next step. Add meaningful history to `docs/history/YYYY-MM-DD.md` and consequential decisions to `docs/decisions/YYYY-MM-DD.md`; keep docs/history.md and docs/decisions.md as indexes. Update JD evidence only when an artifact supports it.
 
 For substantial features, write a walkthrough under docs/walkthroughs/ and update the learning ledger with the actual assessment state. Do not manufacture Bryan's answers. Keep handoffs useful even when a session ends mid-feature. Report remaining processes/resources you started; do not stop unrelated services.
 
@@ -63,7 +63,10 @@ For substantial features, write a walkthrough under docs/walkthroughs/ and updat
 | docs/jd-map.md | Captured role and evidence mapping |
 | docs/operating-manual.md | How Bryan and AI collaborate |
 | docs/learning/README.md | Competency states and assessment index |
-| docs/daily/YYYY-MM-DD.md | Dated history, decisions, learning evidence, and session plans |
+| docs/history/YYYY-MM-DD.md | Dated history |
+| docs/decisions/YYYY-MM-DD.md | Dated decisions |
+| docs/learning/YYYY-MM-DD.md | Dated learning evidence |
+| docs/sessions/YYYY-MM-DD.md | Dated session plans |
 | docs/walkthroughs/ | Explanations of implemented behavior |
 | docs/experiments.md | Experiment and report requirements |
 | docs/decisions.md | Index to dated rationale and superseded choices |
