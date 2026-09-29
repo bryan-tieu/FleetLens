@@ -19,7 +19,9 @@ live in their [history](history.md), [decision](decisions.md), and [learning](le
   identical source keys and rejects changed-payload conflicts. Event/exposure
   transforms, frontend, and real-data ingestion remain unimplemented.
 - Bryan's teach-backs on units, exposure, and replay are recorded in the
-  [2026-09-29 learning evidence](learning/2026-09-29.md).
+  [2026-09-29 learning evidence](learning/2026-09-29.md). He now identifies
+  the shared source key in concurrent loads; physical versus logical counts
+  and changed-payload handling remain the next learning check.
 - The optional [OpenRig pair](openrig.md) was configured on this Mac. At last
   check both seats were ready and idle. The reviewer inspected this M1 slice;
   the main session implemented it, while the separate owner seat made no edits.

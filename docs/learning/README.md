@@ -16,7 +16,7 @@ This records Bryan's demonstrated understanding separately from implementation p
 | SQL grain, joins, event episodes | M1 | Not assessed | Explain sample counts versus event counts and a duplicating join |
 | Exposure, strata, uncertainty | M1–M2 | Not assessed | Bryan identified that the gap could distort the rate; next compute the valid-distance denominator and direction of the distortion |
 | ClickHouse schema and queries | M1–M2 | Explained | Storage walkthrough delivered; trace raw versus logical grain and defend source-key sorting against a drive lookup |
-| Replay, backfill, late data, quarantine | M1–M2 | Explained | Bryan diagnosed row quarantine and a concurrent existence-check race; next trace identical keys and changed payloads through storage |
+| Replay, backfill, late data, quarantine | M1–M2 | Explained | Bryan now identifies that concurrent loaders share the same source key; next trace physical/logical counts and changed-payload conflicts |
 | Dagster assets and operational checks | M2 | Not assessed | Trace a failed upstream check to downstream behavior |
 | Admission budgets and selection bias | M3 | Not assessed | Explain how selection changes observed event prevalence |
 | Training/evaluation isolation | M4 | Not assessed | Find leakage in a proposed selection experiment |
