@@ -12,6 +12,10 @@ Effective 2026-09-28; adapted from FleetLoop's revised scope for a fresh-code Fl
 
 ## M1 — first source-to-explorer demonstration
 
+**Current evidence (2026-10-01):** M1 local synthetic implementation and
+acceptance checks are verified, including a [short recorded explorer demo](../reports/m1-demo-2026-10-01.mp4).
+See [status](status.md) and the [local run report](../reports/m1-local-run-2026-10-01.md).
+
 **JD rows:** 2, 3, 4, 6, 10. Load the small dataset into a local ClickHouse instance through explicit validation and quarantine. Define sample identity, table grain, ordering, provenance, and replay behavior. Store the metric definition in a versioned file initially. Implement hard-braking episodes, valid exposure, and stratified summaries.
 
 Expose bounded queries through a small API and React/TypeScript explorer: cohort summary, drive timeline, event detail. Coordinates and video are optional; do not block the demo on a map.

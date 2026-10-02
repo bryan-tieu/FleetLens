@@ -26,3 +26,7 @@ Canonical units and provenance are set before storage so downstream code does no
 Archify `finalize` passed schema/layout validation, delivery, strict artifact check, and Chrome browser check with no diagnostics. A separate visual check passed containment, readability, viewer chrome, theme states, and captures; the light desktop capture was inspected. The [final receipt](../../.archify/architecture-fleetlens-end-to-end-20260929-154317/review-3/fleetlens-end-to-end.finalize-summary.json) is bound to the HTML artifact. This verifies the diagram's structure and browser presentation, not the planned metric or API. Bryan's architecture teach-back remains unassessed.
 
 Optional teach-back: trace where an invalid row is persisted in each CLI path, then explain why two identical raw rows count as one logical sample while two changed payloads with one key stop the guarded read.
+
+## Production analogue
+
+The map's stages line up with production pipeline layers: adapter, data contract, dead-letter quarantine, bronze raw storage, idempotent logical read, functional-core metric, and a semantic metrics layer. The [pipeline overview](../learning/production-bridge.md#the-pipeline-named-in-production-terms) names each one and links to its card.

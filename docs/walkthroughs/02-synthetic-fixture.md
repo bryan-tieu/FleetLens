@@ -18,9 +18,9 @@ The [oracle](../../tests/fixtures/tiny_expected.json) is stored separately from 
 
 ## Choice and limits
 
-Hashing identity is simpler and more stable under fleet growth than using one shared seeded random stream. The scenario templates are intentionally small and discrete. Assignment probabilities define a generated cohort, not a measured fleet distribution. A 64-bit hash draw is stable under the tested Python environment; byte-identical output is verified on this machine, not promised across all runtimes. A malformed probability or duplicate vehicle ID fails before output. A missing interval is present for future exposure testing; no event detector, exposure transform, ingestion validation, or storage replay exists yet.
+Hashing identity is simpler and more stable under fleet growth than using one shared seeded random stream. The scenario templates are intentionally small and discrete. Assignment probabilities define a generated cohort, not a measured fleet distribution. A 64-bit hash draw is stable under the tested Python environment; byte-identical output is verified on this machine, not promised across all runtimes. A malformed probability or duplicate vehicle ID fails before output. Since this M0 increment, [ingestion validation](03-jsonl-ingestion.md), [storage replay handling](04-clickhouse-storage.md), and [event/exposure transforms](06-hard-braking-metric.md) were added; the missing interval is now tested as excluded exposure.
 
-**Verified locally:** 64 tests passed; Ruff, Black, pip dependency check, and `git diff --check` passed. Repeated CLI generation yielded byte-identical output in the test. Hosted CI has not run this increment.
+**Verified at M0 completion:** 64 local tests passed; Ruff, Black, pip dependency check, and `git diff --check` passed. Repeated CLI generation yielded byte-identical output in the test. A hosted result for this generator increment has not been recorded.
 
 **Optional teach-back:** Why would a single `random.Random(seed)` loop change vehicle 7 when earlier vehicles are inserted? What should happen to the [2, 5) gap when calculating distance?
 
@@ -111,3 +111,7 @@ fleet prevalence, production scale, replay recovery, or Bryan's understanding.
 
 These explanations were delivered on 2026-09-29. Answers and independent
 modification evidence remain pending in the learning ledger.
+
+## Production analogue
+
+Per-vehicle hashing is **deterministic bucketing**, the same technique A/B platforms use to keep users in stable experiment groups. The frozen oracle is a **test oracle / reference answer**, the basis of differential testing between a reference and an optimized implementation. See [B3](../learning/production-bridge.md#b3-deterministic-hash-assignment-and-snapshot-identity), [B13](../learning/production-bridge.md#b13-pure-transformations-separated-from-io), and [B17](../learning/production-bridge.md#b17-independent-test-oracle).

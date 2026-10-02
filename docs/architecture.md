@@ -1,6 +1,14 @@
 # Architecture and boundaries
 
-This is a staged target design. [status.md](status.md) describes what actually exists.
+This describes the M1 local implementation and staged target boundaries. [status.md](status.md) owns current verification and remaining work.
+
+## Implemented M1 path
+
+The [synthetic generator](../src/fleetlens/simulation/generator.py) writes canonical JSONL and a manifest. The [ingestion reader](../src/fleetlens/ingestion/jsonl.py) validates the snapshot, quarantines invalid rows with safe reasons, and reconciles input counts. The [ClickHouse loader](../src/fleetlens/storage/clickhouse.py) appends accepted rows and load receipts. A bounded logical read collapses identical replay copies, rejects changed payloads or mixed source-file hashes, and marks missing/inconsistent receipts or quarantined source rows incomplete.
+
+The [pure metric](../src/fleetlens/metrics/hard_braking_v1.py) turns ordered canonical samples into hard-braking episodes and independently calculated valid exposure. [Stored summaries](../src/fleetlens/metrics/stored_v1.py) aggregate counts and metres by snapshot and explicit vehicle ID before calculating rates. The [fixed API](../src/fleetlens/api/app.py) returns cohort, drive, and event JSON; the [explorer](../explorer/src/App.tsx) displays those results and episode source keys. The browser does not compute or rescale the metric. The local [demo runner](../src/fleetlens/demo.py) prepares the fixture, measures guarded reads, and starts the API and explorer from a prepared environment.
+
+This implementation supports the M0 synthetic contract only. It reads a bounded snapshot into Python and uses a single-process loopback server. Real telemetry normalization, operational recovery orchestration, and representative fleet inference are M2 or later work.
 
 ## Initial data path
 
@@ -17,7 +25,7 @@ seeded synthetic fixture (later: a separately adapted real telemetry subset)
 
 The first demo uses Python, local files, ClickHouse, a small API, and React/TypeScript. Dagster follows when there are dependent assets to orchestrate. Streaming is added for M3 transport experiments, not as a prerequisite to proving the metric.
 
-## Contracts to establish before implementation
+## Contracts and target decisions
 
 | Object | Required decisions |
 |---|---|
@@ -29,7 +37,7 @@ The first demo uses Python, local files, ClickHouse, a small API, and React/Type
 | Metric result | Definition/version, numerator and denominator, strata, units, uncertainty method, run/snapshot, data completeness |
 | Selection manifest | Policy/version, observable features, candidates, chosen/rejected identities, byte costs, seed, evaluation split |
 
-Names and physical schemas will be finalized with implementation. Do not pretend this table is an existing API. Repeated loads must preserve logical identity; ClickHouse engine choice alone is not a proof of idempotency. Test retries, partial failure, and aggregate behavior explicitly.
+M1 sample, load-receipt, event, exposure, and metric contracts are implemented in the linked code and [versioned definition](metrics/hard-braking-v1.md). Selection manifests and broader uncertainty/recovery rules remain target decisions. Repeated loads preserve logical identity through guarded reads; ClickHouse engine choice alone is not a proof of idempotency.
 
 ## Measurement boundaries
 
@@ -56,11 +64,11 @@ src/fleetlens/
     contracts/       # schema, signal meaning, provenance
     simulation/      # synthetic fleet and scenario fixtures
     ingestion/       # source adapters, normalization, quarantine, replay
-    selection/       # trigger and admission policies
+    selection/       # planned M3 trigger and admission policies
     metrics/         # events, exposure, versioned metric evaluation
     api/             # bounded serving interfaces
 orchestration/       # Dagster definitions when M2 needs them
-migrations/          # versioned database DDL
+    storage/migrations/ # versioned ClickHouse DDL
 explorer/            # frontend
 tests/               # unit and focused integration tests
 experiments/         # executable comparisons/configurations when built

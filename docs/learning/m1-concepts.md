@@ -1,0 +1,19 @@
+# M1 learning guide: source to explorer
+
+M1's code is implemented locally, but reading these explanations does not demonstrate understanding. Use the [competency ledger](README.md) to track Bryan's own answers. Start with the [M0 guide](m0-concepts.md) if source keys, canonical units, or the frozen fixture are unfamiliar.
+
+## Suggested reading order
+
+1. **Ingestion and replay:** [JSONL ingestion](../walkthroughs/03-jsonl-ingestion.md) and [ClickHouse storage](../walkthroughs/04-clickhouse-storage.md). One source key identifies one logical sample. A repeated load can create 22 physical rows while preserving 11 logical samples. A same-key changed payload is a conflict; a different file hash under the same snapshot ID is also a conflict. Quarantined rows and interrupted loads are recorded in source accounting, so an incomplete source cannot publish a rate. The receipt is written after the raw insert, which is a crash window rather than an atomic transaction.
+2. **Event and exposure:** [metric definition](../metrics/hard-braking-v1.md) and [pure transform trace](../walkthroughs/06-hard-braking-metric.md). Acceleration at a sample applies until the next sample. Adjacent qualifying intervals become one episode. An interval longer than one second is a gap and adds no valid time or distance. The fixed fixture yields one [1, 3) episode, 36 m on the brake drive, 30 m on the gap drive, and 66 m total. A rate is undefined with no eligible intervals or zero distance; zero episodes over *positive* distance is a valid zero rate.
+3. **Stored summary and strata:** [guarded summary trace](../walkthroughs/07-stored-metric-summaries.md) and [versioned rate card](production-bridge.md#b15-exposure-normalized-rates-and-undefined-denominators). ClickHouse groups raw rows by source key and checks hash, conflict, size, and load receipts. Python calculates per-drive metrics, then sums event counts and valid metres before division for a cohort or vehicle stratum. The fixture cohort is `1 × 100000 / 66 = 1515.15` episodes per 100 km. Averaging the two vehicle rates does not produce that cohort rate. Vehicle ID is an explicit source field; scenario and firmware strata are not implemented.
+4. **API and explorer:** [API trace](../walkthroughs/08-metric-api.md) and [source-to-screen trace](../walkthroughs/09-explorer-and-demo.md). The fixed GET routes bound reads and return source completeness and nullable rates. A conflict is 409, a caller's read bound is 400, and invalid stored data or a nonfinite result is 422. The browser displays API results; it does not recompute the metric. The episode detail traces back to source sequences 1, 2, and 3.
+5. **Evidence and limits:** [production bridge](production-bridge.md) cards B8–B19 connect these mechanisms to ingestion logs, idempotent consumers, gaps-and-islands, exposure-adjusted rates, semantic APIs, and verification practice. The small generated fixture tests arithmetic and traceability, not fleet realism, event ascertainment, uncertainty, or production throughput. Real-source validation and operational recovery are M2 work.
+
+## Three checks that cover the main ideas
+
+1. After two identical loads, why can the raw table have 22 rows while the metric still sees 11 samples? What happens if one source key has a changed speed?
+2. Starting with the brake drive's sequence 1, explain the [1, 3) episode and independently recompute the cohort's 66 m denominator. Why is the [2, 5) gap excluded?
+3. Trace the explorer's 1,515.2 rate and event sequence chips back through the API, guarded read, and source keys. Why must the two vehicle rates not be averaged?
+
+These are optional teach-backs. The [dated learning evidence](2026-09-29.md) records Bryan's partial explanations about units, exposure, and concurrent source keys; none of the three M1 checks above has been answered in full yet.

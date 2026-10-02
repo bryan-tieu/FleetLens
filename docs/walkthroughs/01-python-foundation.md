@@ -6,7 +6,7 @@ Implemented 2026-09-29. Roadmap M0, initial contracts/development-environment in
 
 Before ingestion stores telemetry, every consumer needs the same meaning for a sample. A canonical value uses the project's common unit and sign convention. Provenance means the recorded history of where a value came from and how it was transformed.
 
-The public API is in [contracts/__init__.py](../../src/fleetlens/contracts/__init__.py); validation lives in [sample.py](../../src/fleetlens/contracts/sample.py). Construction returns an immutable object or raises a field-specific ValueError. This is an in-memory Python contract, not yet a JSON parser or quarantine pipeline.
+The public API is in [contracts/__init__.py](../../src/fleetlens/contracts/__init__.py); validation lives in [sample.py](../../src/fleetlens/contracts/sample.py). Construction returns an immutable object or raises a field-specific ValueError. This contract itself does not parse JSON or quarantine rows; the later [M1 reader](03-jsonl-ingestion.md) does that at the source boundary.
 
 ## Trace one observation
 
@@ -19,7 +19,7 @@ The test fixture in [test_contracts.py](../../tests/test_contracts.py) construct
 
 Provenance checks require identifiers and the synthetic generation configuration reference. Sample checks require valid identity, integer sequence, UTC time, finite numbers, and nonnegative speed. Negative acceleration is allowed. The result preserves 10 and -4 exactly: construction does not decode or rescale them.
 
-Its logical key is `("synthetic-demo", "fixture-v1", "vehicle-7", "drive-7", 0)`. A later decode correction keeps this source key, while another snapshot has a different key. This is a definition of identity, not proof of deduplication. Ingestion must later define revisions and replay explicitly.
+Its logical key is `("synthetic-demo", "fixture-v1", "vehicle-7", "drive-7", 0)`. A later decode correction keeps this source key, while another snapshot has a different key. This is a definition of identity, not proof of deduplication. The later [M1 storage boundary](04-clickhouse-storage.md) defines identical replay and changed-payload conflict handling.
 
 ## One failure mode and the alternative
 
@@ -40,3 +40,7 @@ It does not verify that referenced snapshots/configs exist, infer physically rea
 Local Python 3.11.9: 59 test cases pass; Ruff, Black, pip dependency checks, editable installation, wheel build, and isolated wheel import pass. Windows/Linux hosted CI passed on the committed foundation. Setup commands are in the [README](../../README.md).
 
 Walkthrough delivered; Bryan's understanding remains unassessed. Optional teach-back: why could `speed_mps=36` pass validation and still be wrong, and where should the correction happen?
+
+## Production analogue
+
+The sample contract is a small **data contract / value object**: production teams get the same guarantee from schema registries and parse-once validation libraries. Its source key plays the role of an **idempotency key**. See bridge cards [B1 grain and identity](../learning/production-bridge.md#b1-grain-and-source-identity), [B4 contracts](../learning/production-bridge.md#b4-contracts-and-runtime-invariants), and [B5 normalize-once units](../learning/production-bridge.md#b5-units-and-the-normalize-once-boundary), which include the Mars Climate Orbiter unit failure.

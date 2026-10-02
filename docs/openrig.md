@@ -73,6 +73,17 @@ command, rather than assume the healthy host daemon has stopped. Inspect the
 command and approve it in that agent's terminal. No persistent allow rules or
 broader network permissions were added in setup.
 
+On 2026-09-30, the FleetLens pair and daemon were briefly stopped and their
+Codex trust/hooks removed after a misunderstanding about which permissions
+Bryan meant. They were restored from the saved rig state and exact hook
+configuration; the daemon and two seats are running again. The FleetLens trust
+entry was already present in the prelaunch backup, so it was not a new M1
+approval. One-time M1 command approvals did not create persistent allow rules.
+The screen/Chrome permissions were revoked separately: macOS ScreenCapture,
+Accessibility, and AppleEvents approvals for the ChatGPT and computer-use apps
+were reset, Codex Chrome/computer-use plugins disabled, and the Google Chrome
+native-messaging bridge disabled. Those changes do not remove OpenRig access.
+
 OpenRig refuses normal sends to a seat awaiting a permission decision, so
 resolve that prompt before retrying delivery. Do not relaunch duplicate seats
 to fix a pending prompt. This initial setup is supervised, not an unattended

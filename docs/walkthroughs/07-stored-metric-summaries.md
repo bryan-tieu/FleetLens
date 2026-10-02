@@ -1,0 +1,31 @@
+# M1 stored metric summaries
+
+## Purpose and contract
+
+The [ClickHouse reader](../../src/fleetlens/storage/clickhouse.py) accepts a dataset ID, snapshot ID, and a row limit (default 1,000; maximum 10,000). It reconstructs one canonical sample per source key only after checking changed payloads, a single source-file hash, and the response bound. Each completed load appends a receipt to [`snapshot_loads_v1`](../../src/fleetlens/storage/migrations/004_snapshot_loads.sql) with the source-file hash and input/accepted/rejected row counts. The [summary functions](../../src/fleetlens/metrics/stored_v1.py) pass guarded samples into the pure [hard-braking/v1 transform](../../src/fleetlens/metrics/hard_braking_v1.py). They return a cohort or requested drive summary; a rate is defined only when persisted source accounting proves a complete, rejection-free snapshot. There is no API or frontend in this increment.
+
+The snapshot selector permits only bounded ASCII identifiers and is checked before SQL. One statement groups the selected raw rows by source key and joins aggregated load receipts. It carries snapshot-wide key and conflict counts and the minimum/maximum source-file hashes on every returned row. Identical replay rows collapse to one group. Changed payloads, multiple hashes under one snapshot ID, or an over-limit snapshot raise before any canonical sample is returned. A missing receipt, inconsistent receipt counts, a mismatch between accepted and logical rows, or any rejected source row yields `incomplete_source` and a null rate. The query returns at most `max_samples + 1` groups; the database still scans and groups the selected snapshot, so this is a bounded response rather than a measured large-scale query plan.
+
+## Trace a record to a result
+
+The fixture's brake-drive sequence 1 starts as a generated canonical sample at second 1: speed 12 m/s, acceleration −4 m/s², source schema `synthetic-template/v1`, normalization `identity-si/v1`. The loader stores it in `raw_samples_v1` with its dataset, snapshot, vehicle, drive, sequence, UTC event time, provenance, content hash, and source-file hash. After the insert returns, it records 11 input, 11 accepted, and zero rejected rows in the load receipt. The grouped read reconstructs the same `CanonicalSample`, including microsecond precision and source reference. A second identical load adds physical rows and another matching receipt, but no logical source keys.
+
+The pure transform uses that row's acceleration for [1, 2), joins sequence 2 for [2, 3), and produces one episode linked to source sequences 1, 2, and 3. The brake drive has 36 m of valid distance; the gap drive has 30 m after excluding [2, 5). The cohort therefore has one episode and 66 m over eight seconds. [CohortSummary](../../src/fleetlens/metrics/stored_v1.py) sums event counts and metres before dividing: `100000 / 66` episodes per 100 km for this generated fixture. It does not average the two drive rates. A missing snapshot is `insufficient_data`; valid intervals with zero total distance are `zero_exposure`. Both have a null rate.
+
+## Choice, alternative, and failure mode
+
+A single SQL statement returns source-key groups alongside snapshot-wide conflict, hash, size, and load-accounting totals. Separate conflict and data queries would be simpler but could see different states if a loader writes between them. If a changed payload appears for the same key, even beyond the response limit or outside the requested drive, the read raises `StorageConflict` before a metric is returned. A second file hash with disjoint keys also raises instead of silently combining two source snapshots. The drive function scans the bounded snapshot before selecting a drive so the same guard covers it.
+
+The load receipt is written after the raw insert, so an interrupted load with rows but no receipt is marked incomplete. The two inserts are not a distributed transaction. Direct database writes that forge internally consistent rows and receipts are outside this local development contract. A source row quarantined during ingestion remains counted in the receipt; the available samples can be inspected, but the cohort and drive rates are undefined rather than presented as complete.
+
+The read supports the M0 synthetic schema and identity-SI normalization only. The metric remains a fixed generated-data demonstration: it has no real-source adapter, event ascertainment adjustment, uncertainty estimate, scenario/firmware strata, or representative performance benchmark. [Vehicle-ID strata and local tiny-fixture timings](09-explorer-and-demo.md) were added in a later M1 increment. A production-scale implementation would need a durable conflict policy, a reviewed query plan or precomputed assets, a larger-data pagination contract, and operational checks before widening the bound.
+
+## Verification and learning check
+
+Live isolated ClickHouse tests cover the first fixture load, replay, a changed-payload conflict, disjoint keys with two source-file hashes, a quarantined row, response and drive bounds, and microsecond UTC reconstruction. Unit tests cover selector rejection, global conflict/size guards, missing load accounting, empty and zero-distance states, and unsupported source semantics. See [status](../status.md) for exact check results.
+
+Optional teach-back: Why is the cohort rate `100000 / 66` rather than the average of the two drive rates? What would go wrong if a changed-payload conflict were checked in one query and samples read in a later query?
+
+## Production analogue
+
+The raw rows and load receipts resemble an append-only ingest log with a commit marker. The guarded logical read is an idempotent consumer boundary, and incomplete receipts fail closed before a rate is published. [B8](../learning/production-bridge.md#b8-manifests-content-hashes-and-snapshot-integrity), [B10](../learning/production-bridge.md#b10-append-only-raw-storage-with-a-guarded-logical-read), and [B15](../learning/production-bridge.md#b15-exposure-normalized-rates-and-undefined-denominators) connect these mechanisms to production patterns. FleetLens still uses two nontransactional ClickHouse inserts and scans the selected snapshot at query time.

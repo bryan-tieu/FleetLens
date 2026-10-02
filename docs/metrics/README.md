@@ -1,6 +1,6 @@
 # Metric definitions and methodology
 
-No metric computation is implemented yet. Start with versioned definitions in files; a Postgres registry is deferred until mutable control-plane requirements justify it.
+The first pure metric transform is implemented under [hard-braking/v1](hard-braking-v1.md). A bounded, guarded ClickHouse read now feeds snapshot cohort and drive summaries; see the [stored metric walkthrough](../walkthroughs/07-stored-metric-summaries.md). Keep definitions in versioned files; a Postgres registry is deferred until mutable control-plane requirements justify it.
 
 Each metric definition must name:
 - Purpose, owner, version/change history, and restatement policy.
@@ -10,7 +10,7 @@ Each metric definition must name:
 - Stratification dimensions, completeness/ascertainment limitations, and uncertainty method.
 - Computation/query, hand-computed fixture, and relevant reconciliation checks.
 
-The initial metric is a **hard-braking episode rate per valid distance**, with its threshold/duration and integration/gap rules to be fixed before implementation. Do not count every below-threshold sample as a separate event.
+The initial metric is a **hard-braking episode rate per valid distance**. Its threshold, duration, integration, and gap rules are fixed in v1. Do not count every below-threshold sample as a separate event.
 
 Exposure is computed independently of expensive clip admission. Missing event ascertainment must still be reported; knowing exposure does not recover unobserved events. Synthetic event rates do not measure real autonomous-driving safety.
 

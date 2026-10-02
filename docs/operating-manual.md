@@ -44,7 +44,7 @@ understanding. Startup is orientation only; task assignment is explicit.
 
 After a feature, aim to answer: What problem does it solve? What are its inputs and outputs? What makes the result correct? How can it fail? Why this design? What would change at larger scale?
 
-Competency states are recorded in [learning/README.md](learning/README.md), with dated answers in [learning/](learning/README.md) and optional Q&A in [interview/](interview/README.md). Missing understanding is a review item, not a failure or a reason to stop all implementation. Targeted Python/SQL practice should strengthen independence.
+Competency states are recorded in [learning/README.md](learning/README.md), with dated answers in [learning/](learning/README.md) and optional Q&A in [interview/](interview/README.md). Missing understanding is a review item, not a failure or a reason to stop all implementation. Targeted Python/SQL practice should strengthen independence. Each implemented concept also has a card in the [production bridge](learning/production-bridge.md) naming the production pattern it corresponds to; a *bridge check* asks Bryan to connect the FleetLens mechanism, that pattern, and one difference between them.
 
 ## Ending or switching sessions
 
